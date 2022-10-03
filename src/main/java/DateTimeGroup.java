@@ -6,28 +6,18 @@ import java.util.Date;
 class DateTimeGroup {
 
   public static void main(String[] args) {
-
     datePrompt();
   }
 
   private static void datePrompt() {
 
-//    LocalDate date = LocalDate.now();
-//    DateTimeFormatter formatter = DateTimeFormatter.ofLocalizedDateTime(date);
-//    String text = date.format(formatter);
-//    LocalDate parsedDate = LocalDate.parse(text, formatter);
+    Date date = new Date();
 
+    SimpleDateFormat prompt = new SimpleDateFormat( "EEE MMM  d HH:mm:ss");
 
-
-    SimpleDateFormat prompt = new SimpleDateFormat( "EEE MMM d  HH:mm:ss");
-
-    String today = prompt.format(LocalDateTime.now());
+    String today = prompt.format(date);
 
     System.out.printf("Last login: %s on ttys000 %n", today);
-
-
-
-
   }
 }
 
