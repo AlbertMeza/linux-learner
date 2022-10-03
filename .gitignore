@@ -8,7 +8,7 @@ build/
 *.iml
 *.ipr
 out/
-!**/src/main/**/out/
+!**/src/Main/**/out/
 !**/src/test/**/out/
 
 ### Eclipse ###
@@ -20,7 +20,7 @@ out/
 .springBeans
 .sts4-cache
 bin/
-!**/src/main/**/bin/
+!**/src/Main/**/bin/
 !**/src/test/**/bin/
 
 ### NetBeans ###
