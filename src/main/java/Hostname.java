@@ -14,13 +14,11 @@ public class Hostname {
 
  }
 
- private String userName() {
+ private String hostName() {
   BufferedReader buffReader = new BufferedReader(new InputStreamReader(System.in));
   System.out.println("Please enter your User Name: " + System.in);
-  throw new UnsupportedOperationException(e) {
-//just used to compile now
-  };
-//  }return (System.in + computer);
+  return (System.in + computer);
+  }
 
   //parse username
 
@@ -32,6 +30,6 @@ public class Hostname {
  String userName = myObj.nextLine();  // Read user input
    System.out.println("Username is: " + userName);  // Output user input*/
  }
-}
+
 
 

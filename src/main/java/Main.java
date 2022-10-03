@@ -8,5 +8,8 @@ public class Main {
     Terminal terminal = new Terminal();
     terminal.setCommand("exit");
     terminal.exit();
+    System.out.println();
+    DateTimeGroup.datePrompt();
+
   }
 }
