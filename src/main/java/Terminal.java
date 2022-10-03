@@ -1,19 +1,25 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Scanner;
 
 public class Terminal {
 
   private static final StringLiterals literals = new StringLiterals();
   private String command;
-  private String hostName;
+  private String userDetails = ""; //giovanni@SuperComputer
 
-//  public void startTerminal(){       start method to implement
-//    DateTimeGroup.datePrompt();
-//    initiate get username data
+  public Terminal(){
+    setUserDetails();
+    //startTerminal();
+  }
+
+  public void startTerminal(){
+    DateTimeGroup.datePrompt();
+    System.out.println(getUserDetails() + " ~ %");
 //    while(command != Commands.EXIT){
 //
 //    }
-//  }
+  }
 
   public void exit(){
     if (command.equals(Commands.EXIT.command())){
@@ -29,15 +35,22 @@ public class Terminal {
     this.command = command;
   }
 
-  public String getHostName() {
-    return hostName;
+  public String getUserDetails() {
+    return this.userDetails;
   }
 
-  public void setHostName() {
-    BufferedReader buffReader = new BufferedReader(new InputStreamReader(System.in));
-    System.out.println("Please enter your User Name: " + System.in);
-//    this.hostName = ;
+  public void setUserDetails() {
+    System.out.println(literals.WELCOME);
+    System.out.println();
+    Scanner sc= new Scanner(System.in);
+    System.out.println("Please enter your User Name: ");
+    String username = sc.next();
+    System.out.println("Please enter your Computer Name: ");
+    String computerName = sc.next();
+    this.userDetails = username+"@"+computerName;
+    System.out.println(literals.BLANKSCREEN);
   }
+
 
 
 }
