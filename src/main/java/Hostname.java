@@ -4,19 +4,23 @@ import java.io.InputStreamReader;
 public class Hostname {
 
  // order in fields, constructors, methods
- private final String welcome = "Hello! Welcome to Linux Learner. If you are new to the Linux Command line then this is the place for you."
-     + "%n If you are not a Linux beginner, then let's test your knowledge with some tasks!";
+ private final String welcome =
+     "Hello! Welcome to Linux Learner. If you are new to the Linux Command line then this is the place for you."
+         + "%n If you are not a Linux beginner, then let's test your knowledge with some tasks!";
 
  private final String computer = "-current-Computer ~ % ";
 
-  public Hostname() { //ctor
+ public Hostname() { //ctor
 
-  }
-  private String userName() {
-   BufferedReader buffReader = new BufferedReader(new InputStreamReader(System.in));
-   System.out.println("Please enter your User Name: " + System.in);
-  }return "return";//(System.in + computer);
+ }
 
+ private String userName() {
+  BufferedReader buffReader = new BufferedReader(new InputStreamReader(System.in));
+  System.out.println("Please enter your User Name: " + System.in);
+  throw new UnsupportedOperationException(e) {
+//just used to compile now
+  };
+//  }return (System.in + computer);
 
   //parse username
 
@@ -27,6 +31,7 @@ public class Hostname {
 
  String userName = myObj.nextLine();  // Read user input
    System.out.println("Username is: " + userName);  // Output user input*/
+ }
 }
 
 
