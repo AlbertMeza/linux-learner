@@ -6,7 +6,7 @@ public class Main {
 //    System.out.println();
 //
       Terminal terminal = new Terminal();
-      terminal.startTerminal();
+      //terminal.startTerminal();
 //    terminal.setCommand("exit");
 //    terminal.exit();
 //    System.out.println();

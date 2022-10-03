@@ -6,19 +6,28 @@ public class Terminal {
 
   private static final StringLiterals literals = new StringLiterals();
   private String command;
-  private String userDetails = ""; //giovanni@SuperComputer
-
+  private String userName = "";
+  private String computerName = "";
   public Terminal(){
     setUserDetails();
-    //startTerminal();
+    System.out.println(literals.BLANKSCREEN);
+    startTerminal();
+  }
+
+  public String getUserDetails() {
+    return getUserName()+"@"+getComputerName();
   }
 
   public void startTerminal(){
     DateTimeGroup.datePrompt();
-    System.out.println(getUserDetails() + " ~ %");
-//    while(command != Commands.EXIT){
-//
-//    }
+    System.out.print(getUserDetails() + " ~ %");
+    Scanner sc = new Scanner(System.in);
+    setCommand(sc.next());
+    while(!command.equals(Commands.EXIT.command())){
+      System.out.print(getUserDetails() + " ~ %");
+      setCommand(sc.next());
+    }
+    exit();
   }
 
   public void exit(){
@@ -35,19 +44,24 @@ public class Terminal {
     this.command = command;
   }
 
-  public String getUserDetails() {
-    return this.userDetails;
+  private String getUserName() {
+    return userName;
   }
 
-  public void setUserDetails() {
+  private String getComputerName() {
+    return computerName;
+  }
+
+  private void setUserDetails() {
     System.out.println(literals.WELCOME);
     System.out.println();
     Scanner sc= new Scanner(System.in);
     System.out.println("Please enter your User Name: ");
-    String username = sc.next();
+    String userName = sc.next();
     System.out.println("Please enter your Computer Name: ");
     String computerName = sc.next();
-    this.userDetails = username+"@"+computerName;
+    this.userName = userName;
+    this.computerName = computerName;
     System.out.println(literals.BLANKSCREEN);
   }
 
