@@ -1,21 +1,18 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.text.Format;
-import java.util.Comparator;
-import java.util.Objects;
+import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.regex.*;
 
 public class Terminal {
 
   private static final StringLiterals literals = new StringLiterals();
-  private String command;
+  private static final LinkedList<String> homeDirectory = Directory.createHomeDirectory();
+  private LinkedList<String> currentDirectory;
+  private String command = "";
   private String userName = "";
   private String computerName = "";
-
   public Terminal(){
     setUserDetails();
-    System.out.println(literals.BLANK_SCREEN);
+    setCurrentDirectory(Directory.createHomeDirectory());
     startTerminal();
   }
 
@@ -26,7 +23,6 @@ public class Terminal {
   public void startTerminal(){
     DateTimeGroup.datePrompt();
     Scanner sc = new Scanner(System.in);
-    setCommand(sc.next());
     while(!command.equals(Commands.EXIT.command())){
       System.out.print(getUserDetails() + literals.ACCESS_LEVEL);
       setCommand(sc.next());
@@ -34,33 +30,54 @@ public class Terminal {
     }
   }
 
-  public void commandAction(String command) {
-    switch (command) {
+  public void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop
+    String splitCommand[] = command.split("\\s",2);
+    switch (splitCommand[0]) {
       case "clear":
         Commands.CLEAR.execute();
         break;
-      case "ls":
+     case "ls":
         Commands.LIST_DIRECTORIES.execute();
         break;
       case "pwd":
         System.out.printf("%s%s%n", literals.PWD, getUserName());
         break;
-      case "exit":
-        Commands.EXIT.execute();
-        break;
       case "touch":
         System.out.println("You need to specify what you want to use with the touch command.");
         break;
-      case "touch file":
-        Commands.TOUCH.execute();
+      case "exit":
+        Commands.EXIT.execute();
         break;
       default:
-        System.out.println("Incorrect Command");
-
+        System.out.println("Incorrect command");
     }
   }
 
+  //if(help) is used then they can type the commmand they want help with down below
 
+
+
+  public void commandDescription(String Command) { //intended to be used as a help desk
+    switch (command) {
+      case "clear":
+        Commands.CLEAR.description();
+        break;
+      case "ls":
+        Commands.LIST_DIRECTORIES.description();
+        break;
+      case "pwd":
+        Commands.PRINT_WORKING_DIRECTORY.description();
+        break;
+      case "touch":
+        Commands.TOUCH.description();
+        break;
+      case "exit":
+        Commands.EXIT.description();
+        break;
+      default:
+        System.out.println("help for that command is not available. You may use clear, ls, pwd, touch, or exit");
+    }
+  }
 
   public String getCommand() {
     return command;
@@ -90,4 +107,14 @@ public class Terminal {
     this.computerName = computerName;
     System.out.println(literals.BLANK_SCREEN);
   }
+
+  public LinkedList<String> getCurrentDirectory() {
+    return this.currentDirectory;
+  }
+
+  private void setCurrentDirectory(LinkedList<String> currentDirectory) {
+    this.currentDirectory = currentDirectory;
+  }
+
+
 }
