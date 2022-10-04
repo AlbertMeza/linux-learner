@@ -9,7 +9,9 @@ public class StringLiterals {
 
   public final String WELCOME = ("Hello! Welcome to Linux Learner. If you are new to the Linux Command line then this is the place for you.\nIf you are not a Linux beginner, then let's test your knowledge with some tasks!");
 
-  public final String DIRECTORY_CONTENTS = (" Pictures Desktop Public Documents Downloads Library Movies\n");
+  public final String DIRECTORY_CONTENTS = (" Pictures Desktop Public Documents Downloads Library Movies");
 
   public final String PWD = ("/Users/");
+
+  public final String TOUCH = ("file");
 }
