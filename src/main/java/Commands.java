@@ -10,6 +10,7 @@ public enum Commands {
 
   private final String command;
 
+
   Commands(String command){
     this.command = command;
   }
