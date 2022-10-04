@@ -6,7 +6,7 @@ public enum Commands {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute() {
 
     }
   },
@@ -17,8 +17,8 @@ public enum Commands {
     }
 
     @Override
-    public void execute(String[] args) {
-
+    public void execute() {
+      System.out.println(literals.BLANK_SCREEN);
     }
   },
   EXIT("exit") {
@@ -28,8 +28,8 @@ public enum Commands {
     }
 
     @Override
-    public void execute(String[] args) {
-
+    public void execute() {
+      System.out.println(literals.EXIT);
     }
   },
   LIST_DIRECTORIES("ls") {
@@ -39,7 +39,7 @@ public enum Commands {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute() {
 
     }
   },
@@ -50,7 +50,7 @@ public enum Commands {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute() {
 
     }
   },
@@ -61,13 +61,13 @@ public enum Commands {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute() {
 
     }
   };
 
 
-
+  private static final StringLiterals literals = new StringLiterals();
   private final String command;
 
 
@@ -94,5 +94,5 @@ public enum Commands {
   }
   public abstract String description();
 
-  public abstract void execute(String [] args);
+  public abstract void execute();
 }

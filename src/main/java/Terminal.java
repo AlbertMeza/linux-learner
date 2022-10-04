@@ -27,20 +27,19 @@ public class Terminal {
     while(!command.equals(Commands.EXIT.command())){
       System.out.print(getUserDetails() + literals.ACCESS_LEVEL);
       setCommand(sc.next());
+      commandAction(sc.next());
     }
-    exit();
   }
 
-//  public void commandAction() {
+  public void commandAction(String command) {
 //    System.out.println("Please enter your next command: ");
-//    Scanner sc= new Scanner(System.in);
-//    switch (sc.next()){
-//      case "clear":
-//        clearCommand();
-//        break;
-//      case "exit":
-//        exit();
-//        break;
+    switch (command) {
+      case "clear":
+        Commands.CLEAR.execute();
+        break;
+      case "exit":
+        Commands.EXIT.execute();
+        break;
 //      case "ls":
 //        lsCommand();
 //        break;
@@ -50,21 +49,12 @@ public class Terminal {
 //      case "touch":
 //        touchCommand();
 //        break;
-//      default:
-//        System.out.println("Incorrect command");
-//    }
-
-  /*}*/
-
-  public void clearCommand () {
-    System.out.println(literals.BLANKSCREEN);
-  }
-
-  public void exit(){
-    if (command.equals(Commands.EXIT.command())){
-      System.out.println(literals.EXIT);
+      default:
+        System.out.println("Incorrect command");
     }
   }
+
+
 
   public String getCommand() {
     return command;
