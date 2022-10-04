@@ -6,7 +6,7 @@ public enum Commands {
     }
 
     @Override
-    public void execute(String[] args) {
+    public void execute() {
 
     }
   },
@@ -17,8 +17,8 @@ public enum Commands {
     }
 
     @Override
-    public void execute(String[] args) {
-
+    public void execute() {
+      System.out.println(literals.BLANK_SCREEN);
     }
   },
   EXIT("exit") {
@@ -28,8 +28,8 @@ public enum Commands {
     }
 
     @Override
-    public void execute(String[] args) {
-
+    public void execute() {
+      System.out.println(literals.EXIT);
     }
   },
   LIST_DIRECTORIES("ls") {
@@ -39,8 +39,8 @@ public enum Commands {
     }
 
     @Override
-    public void execute(String[] args) {
-
+    public void execute() {
+      System.out.println(literals.DIRECTORY_CONTENTS);
     }
   },
   PRINT_WORKING_DIRECTORY("pwd") {
@@ -50,8 +50,8 @@ public enum Commands {
     }
 
     @Override
-    public void execute(String[] args) {
-
+    public void execute() {
+      System.out.println(literals.PWD);
     }
   },
   TOUCH("touch") {
@@ -61,13 +61,13 @@ public enum Commands {
     }
 
     @Override
-    public void execute(String[] args) {
-
+    public void execute() {
+      System.out.println(literals.TOUCH);
     }
   };
 
 
-
+  private static final StringLiterals literals = new StringLiterals();
   private final String command;
 
 
@@ -92,7 +92,7 @@ public enum Commands {
   public String command() {
     return command;
   }
-  public abstract String description();
 
-  public abstract void execute(String [] args);
+  public abstract String description();
+  public abstract void execute();
 }

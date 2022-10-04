@@ -9,8 +9,8 @@ public class Main {
 //
       Terminal terminal = new Terminal();
       terminal.startTerminal();
-      terminal.commandAction();
-      terminal.commandAction();
+//      terminal.commandAction();
+//      terminal.commandAction();
 
 
 //    terminal.setCommand("exit");
