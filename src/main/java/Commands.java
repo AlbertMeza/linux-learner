@@ -40,7 +40,6 @@ public enum Commands {
 
     @Override
     public void execute() {
-      System.out.println(literals.DIRECTORY_CONTENTS);
     }
   },
   PRINT_WORKING_DIRECTORY("pwd") {
@@ -51,7 +50,7 @@ public enum Commands {
 
     @Override
     public void execute() {
-
+      System.out.println(literals.PWD);
     }
   },
   TOUCH("touch") {
