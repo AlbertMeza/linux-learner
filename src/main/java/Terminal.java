@@ -57,7 +57,7 @@ public class Terminal {
 
 
 
-  public void commandDescription(String Command) { //intended to be used as a help desk
+  public void commandDescription(String command) { //intended to be used as a help desk
     switch (command) {
       case "clear":
         Commands.CLEAR.description();

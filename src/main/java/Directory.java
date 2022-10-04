@@ -27,6 +27,32 @@ public class Directory {
     return desktop;
   }
 
+  public static LinkedList<String> createLibraryDirectory(){
+    LinkedList<String> library = new LinkedList<>();
+    library.add("Head First Java");
+    library.add("Java: A Beginner's Guide");
+    library.add("Java: The Complete Reference");
+    library.add("Core Java");
+    library.add("Effective Java");
+    library.add("Design Patterns: Elements of Reusable Object-Oriented Software");
+    library.add("Head First Design Patterns ");
+
+    return library;
+  }
+
+  public static LinkedList<String> createMoviesDirectory(){
+    LinkedList<String> movies = new LinkedList<>();
+    movies.add("Spinal Tap");
+    movies.add("Avatar");
+    movies.add("Avengers: Endgame");
+    movies.add("Star Wars: Revenge of the Sith");
+    movies.add("Titanic");
+    movies.add("The Dark Knight");
+
+    return movies;
+  }
+
+
   public static String printDirectory(LinkedList<String> list){
     String directoryList = list.get(0) + " ";
     for(int i = 1; i < list.size(); i++){
@@ -50,8 +76,8 @@ public class Directory {
 
   public LinkedList<String> changeDirectory(String directory){
     switch(directory) {
-      case "Desktop":
-        return createDesktopDirectory();
+//      case "Desktop":
+//        return createDesktopDirectory();
 //      case "Pictures":
 //        return createPictureDirectory();
 //      case "Public":
