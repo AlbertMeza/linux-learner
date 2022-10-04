@@ -62,7 +62,7 @@ public enum Commands {
 
     @Override
     public void execute() {
-      System.out.println(literals.TOUCH);
+      //System.out.println(literals.TOUCH);
     }
   };
 

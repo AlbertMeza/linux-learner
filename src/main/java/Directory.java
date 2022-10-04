@@ -7,13 +7,13 @@ public class Directory {
 
   public static LinkedList<String> createHomeDirectory(){
     LinkedList<String> home = new LinkedList<>();
-    home.add("Pictures");//complete
+    home.add("Pictures");
     home.add("Desktop"); //complete
-    home.add("Public"); //complete
-    home.add("Documents");//complete
-    home.add("Downloads"); //complete
-    home.add("Library"); //complete
-    home.add("Movies"); //complete
+    home.add("Public");
+    home.add("Documents");
+    home.add("Downloads");
+    home.add("Library");
+    home.add("Movies");
 
     return home;
   }
@@ -50,6 +50,23 @@ public class Directory {
     return publix;
   }
 
+  public static LinkedList<String> createPictureDirectory(){
+    LinkedList<String> picture = new LinkedList<>();
+    picture.add("Cats");
+    picture.add("LinkedIn.JPEG");
+    picture.add("Screenshots");
+
+    return picture;
+  }
+
+  public static LinkedList<String> createDownloadsDirectory(){
+    LinkedList<String> downloads = new LinkedList<>();
+    downloads.add("League of Legends");
+    downloads.add("Spotify");
+
+    return downloads;
+  }
+
   public static String printDirectory(LinkedList<String> list){
     String directoryList = list.get(0) + " ";
     for(int i = 1; i < list.size(); i++){
@@ -75,14 +92,14 @@ public class Directory {
     switch(directory) {
       case "Desktop":
         return createDesktopDirectory();
-//      case "Pictures":
-//        return createPictureDirectory();
+      case "Pictures":
+        return createPictureDirectory();
 //      case "Public":
 //        return createPublicDirectory();
 //      case "Documents":
 //        return createDocumentsDirectory();
-//      case "Downloads":
-//        return createDownloadsDirectory();
+      case "Downloads":
+        return createDownloadsDirectory();
 //      case "Library":
 //        return createLibraryDirectory();
 //      case "Movies":
@@ -92,5 +109,3 @@ public class Directory {
   }
 }
 
-
- // Pictures Desktop Public Documents Downloads Library Movies
