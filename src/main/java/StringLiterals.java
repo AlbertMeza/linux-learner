@@ -12,4 +12,17 @@ public class StringLiterals {
   public final String DIRECTORY_CONTENTS = (" Pictures Desktop Public Documents Downloads Library Movies\n");
 
   public final String PWD = ("/Users/");
+
+  public final String LS_DESCRIPTION = ("List Directory Contents (ls):  List information about the FILEs (the current directory by default)./n Sort entries alphabetically if no order specified");
+
+  public final String EXIT_DESCRIPTION = ("Exit: Disconnects ssh user and Exits the terminal");
+
+  public final String PWD_DESCRIPTION = ("Print Working Directory (pwd): Print the full filename of the current working directory.");
+
+  public final String TOUCH_DESCRIPTION = ("Update the access and modification times of each FILE to the current time. /n A FILE argument that does not exist is created empty\n");
+
+  public final String CD_DESCRIPTION = ("Change Directory (cd): Change the current directory user is in to requested directory./n Note: user may not have permissions to access all Directories");
+
+  public final String CLEAR_DESCRIPTION = ("Clear: clears the screen, does not remove any data currently or previously used. ");
+
 }

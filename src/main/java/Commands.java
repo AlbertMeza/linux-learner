@@ -92,6 +92,7 @@ public enum Commands {
   public String command() {
     return command;
   }
+
   public abstract String description();
 
   public abstract void execute();
