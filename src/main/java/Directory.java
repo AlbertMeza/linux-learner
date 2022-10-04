@@ -94,16 +94,16 @@ public class Directory {
         return createDesktopDirectory();
       case "Pictures":
         return createPictureDirectory();
-//      case "Public":
-//        return createPublicDirectory();
-//      case "Documents":
-//        return createDocumentsDirectory();
+      case "Public":
+        return createPublicDirectory();
+      case "Documents":
+        return createDocumentsDirectory();
       case "Downloads":
         return createDownloadsDirectory();
-//      case "Library":
-//        return createLibraryDirectory();
-//      case "Movies":
-//        return createMoviesDirectory();
+      case "Library":
+        return createLibraryDirectory();
+      case "Movies":
+        return createMoviesDirectory();
     }
     return getCurrentDirectory();
   }

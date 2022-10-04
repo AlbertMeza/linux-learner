@@ -49,7 +49,7 @@ public class Terminal {
         Commands.EXIT.execute();
         break;
       case "help":
-        commandDescription(commandTwo);
+        commandDescription("ls");
         break;
       default:
         System.out.println("Incorrect command");
