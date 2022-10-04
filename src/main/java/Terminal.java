@@ -48,16 +48,15 @@ public class Terminal {
       case "exit":
         Commands.EXIT.execute();
         break;
+        //// TODO: 10/4/2022 add help to this for command description
       default:
         System.out.println("Incorrect command");
     }
   }
 
-  //if(help) is used then they can type the commmand they want help with down below
+  //if(help) is used then they can type the command they want help with down below
 
-
-
-  public void commandDescription(String Command) { //intended to be used as a help desk
+  public void commandDescription(String command) {//intended to be used as a help desk
     switch (command) {
       case "clear":
         Commands.CLEAR.description();
@@ -76,6 +75,7 @@ public class Terminal {
         break;
       default:
         System.out.println("help for that command is not available. You may use clear, ls, pwd, touch, or exit");
+        //// TODO: 10/4/2022 make constant
     }
   }
 
