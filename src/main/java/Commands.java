@@ -2,7 +2,7 @@ public enum Commands {
   CHANGE_DIRECTORY("cd") { //must have an internal state these commands execute against (Virtual file tracker made in a different class)
     @Override
     public String description() {
-      return null;
+      return literals.CD_DESCRIPTION;
     }
 
     @Override
@@ -13,7 +13,7 @@ public enum Commands {
   CLEAR("clear") {
     @Override
     public String description() {
-      return null;
+      return literals.CLEAR_DESCRIPTION;
     }
 
     @Override
@@ -24,7 +24,7 @@ public enum Commands {
   EXIT("exit") {
     @Override
     public String description() {
-      return null;
+      return literals.EXIT_DESCRIPTION;
     }
 
     @Override
@@ -35,7 +35,7 @@ public enum Commands {
   LIST_DIRECTORIES("ls") {
     @Override
     public String description() {
-      return null;
+      return literals.LS_DESCRIPTION;
     }
 
     @Override
@@ -45,7 +45,7 @@ public enum Commands {
   PRINT_WORKING_DIRECTORY("pwd") {
     @Override
     public String description() {
-      return null;
+      return literals.PWD_DESCRIPTION;
     }
 
     @Override
@@ -56,7 +56,7 @@ public enum Commands {
   TOUCH("touch") {
     @Override
     public String description() {
-      return null;
+      return literals.TOUCH_DESCRIPTION;
     }
 
     @Override
@@ -91,6 +91,7 @@ public enum Commands {
   public String command() {
     return command;
   }
+
   public abstract String description();
 
   public abstract void execute();
