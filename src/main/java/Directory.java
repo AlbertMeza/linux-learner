@@ -27,6 +27,23 @@ public class Directory {
     return desktop;
   }
 
+  public static LinkedList<String> createPictureDirectory(){
+    LinkedList<String> picture = new LinkedList<>();
+    picture.add("Cats");
+    picture.add("LinkedIn.JPEG");
+    picture.add("Screenshots");
+
+    return picture;
+  }
+
+  public static LinkedList<String> createDownloadsDirectory(){
+    LinkedList<String> downloads = new LinkedList<>();
+    downloads.add("League of Legends");
+    downloads.add("Spotify");
+
+    return downloads;
+  }
+
   public static String printDirectory(LinkedList<String> list){
     String directoryList = list.get(0) + " ";
     for(int i = 1; i < list.size(); i++){
@@ -52,14 +69,14 @@ public class Directory {
     switch(directory) {
       case "Desktop":
         return createDesktopDirectory();
-//      case "Pictures":
-//        return createPictureDirectory();
+      case "Pictures":
+        return createPictureDirectory();
 //      case "Public":
 //        return createPublicDirectory();
 //      case "Documents":
 //        return createDocumentsDirectory();
-//      case "Downloads":
-//        return createDownloadsDirectory();
+      case "Downloads":
+        return createDownloadsDirectory();
 //      case "Library":
 //        return createLibraryDirectory();
 //      case "Movies":
@@ -69,5 +86,3 @@ public class Directory {
   }
 }
 
-
- // Pictures Desktop Public Documents Downloads Library Movies
