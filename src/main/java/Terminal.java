@@ -7,82 +7,63 @@ public class Terminal {
 
   private static final StringLiterals literals = new StringLiterals();
   private String command;
-  public String userDetails = ""; //giovanni@SuperComputer
-
+  private String userName = "";
+  private String computerName = "";
   public Terminal(){
     setUserDetails();
+    System.out.println(literals.BLANK_SCREEN);
+    startTerminal();
+  }
+
+  public String getUserDetails() {
+    return getUserName()+"@"+getComputerName();
   }
 
   public void startTerminal(){
     DateTimeGroup.datePrompt();
-    System.out.println(getUserDetails());
-//    while(command != Commands.EXIT){
-//
-//    }
-  }
-
-  public void commandAction() {
-    System.out.println("Please enter your next command: ");
-    Scanner sc= new Scanner(System.in);
-    switch (sc.next()){
-      case "clear":
-        clearCommand();
-        break;
-      case "exit":
-        exit();
-        break;
-      case "ls":
-        lsCommand();
-        break;
-      case "pwd":
-        pwdCommand(sc.next());
-        break;
-      case "touch":
-        touchCommand();
-        break;
-      default:
-        System.out.println("Incorrect command");
+    System.out.print(getUserDetails() + literals.ACCESS_LEVEL);
+    Scanner sc = new Scanner(System.in);
+    setCommand(sc.next());
+    while(!command.equals(Commands.EXIT.command())){
+      System.out.print(getUserDetails() + literals.ACCESS_LEVEL);
+      setCommand(sc.next());
     }
-
+    exit();
   }
+
+//  public void commandAction() {
+//    System.out.println("Please enter your next command: ");
+//    Scanner sc= new Scanner(System.in);
+//    switch (sc.next()){
+//      case "clear":
+//        clearCommand();
+//        break;
+//      case "exit":
+//        exit();
+//        break;
+//      case "ls":
+//        lsCommand();
+//        break;
+//      case "pwd":
+//        pwdCommand(sc.next());
+//        break;
+//      case "touch":
+//        touchCommand();
+//        break;
+//      default:
+//        System.out.println("Incorrect command");
+//    }
+
+  /*}*/
 
   public void clearCommand () {
     System.out.println(literals.BLANKSCREEN);
   }
 
   public void exit(){
-    System.out.println(literals.EXIT);
-  }
-
-  public void lsCommand() {
-    System.out.println(getUserDetails() + literals.DIRECTORY_CONTENTS);
-  }
-
-  public void pwdCommand (String command) {
-    Pattern p = Pattern.compile("D%@");
-    Matcher m = p.matcher("D%@");
-
-    while (m.find()) {
-      System.out.println("find() found substring \"" + m.group()
-          + "\" starting at index " + m.start()
-          + " and ending at index " + m.end());
+    if (command.equals(Commands.EXIT.command())){
+      System.out.println(literals.EXIT);
     }
-
-    if (m.matches()) {
-      System.out.println("matches() found substring \"" + m.group()
-          + "\" starting at index " + m.start()
-          + " and ending at index " + m.end());
-    } else {
-      System.out.println("matches() found nothing");
-    }
-
-    String match = "**";
-    String matchResult = m.replaceFirst(match);
-    System.out.println(literals.PWD + matchResult);
-  }
-
-  public void touchCommand () {
-    System.out.println();
   }
 
   public String getCommand() {
@@ -93,18 +74,27 @@ public class Terminal {
     this.command = command;
   }
 
-  public String getUserDetails() {
-    return this.userDetails;
+  private String getUserName() {
+    return userName;
   }
 
-  public void setUserDetails() {
-    System.out.println(literals.WELCOME + "/n");
+  private String getComputerName() {
+    return computerName;
+  }
+
+  private void setUserDetails() {
+    System.out.println(literals.WELCOME);
+    System.out.println();
     Scanner sc= new Scanner(System.in);
-    System.out.println("Please enter your User Name: ");
-    String username = sc.next();
-    System.out.println("Please enter your Computer Name: ");
+    System.out.println(literals.USER_PROMPT);
+    String userName = sc.next();
+    System.out.println(literals.COMPUTER_PROMPT);
     String computerName = sc.next();
-    userDetails = username+"@"+computerName + " ~ %";
-    System.out.println(literals.BLANKSCREEN);
-    }
+    this.userName = userName;
+    this.computerName = computerName;
+    System.out.println(literals.BLANK_SCREEN);
+  }
+
+
+
 }
