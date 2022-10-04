@@ -11,6 +11,8 @@ public class StringLiterals {
 
   public final String WELCOME = ("Hello! Welcome to Linux Learner. If you are new to the Linux Command line then this is the place for you.\nIf you are not a Linux beginner, then let's test your knowledge with some tasks!");
 
+  public final String DIRECTORY_CONTENTS = ("Pictures Desktop Public Documents Downloads Library Movies");
+
   public final String PWD = ("/Users/");
 
   public final String LS_DESCRIPTION = ("List Directory Contents (ls):  List information about the FILEs (the current directory by default)./n Sort entries alphabetically if no order specified");

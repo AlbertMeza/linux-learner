@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 import java.util.Scanner;
-
+import java.util.regex.*;
 
 public class Terminal {
 
@@ -10,7 +10,6 @@ public class Terminal {
   private String command = "";
   private String userName = "";
   private String computerName = "";
-
   public Terminal(){
     setUserDetails();
     setCurrentDirectory(Directory.createHomeDirectory());
@@ -38,24 +37,16 @@ public class Terminal {
         Commands.CLEAR.execute();
         break;
      case "ls":
-       System.out.println(Directory.printDirectory(this.currentDirectory));
+        Commands.LIST_DIRECTORIES.execute();
         break;
       case "pwd":
-        Commands.PRINT_WORKING_DIRECTORY.execute();
+        System.out.printf("%s%s%n", literals.PWD, getUserName());
         break;
       case "touch":
-        Commands.TOUCH.execute();
+        System.out.println("You need to specify what you want to use with the touch command.");
         break;
       case "exit":
         Commands.EXIT.execute();
-        break;
-      case "cd":
-        if(currentDirectory.contains(splitCommand[1])){
-
-        }
-        else {
-          System.out.println(literals.INVALID_CD);
-        }
         break;
       default:
         System.out.println("Incorrect command");
