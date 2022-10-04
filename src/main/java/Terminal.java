@@ -1,14 +1,16 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.text.Format;
 import java.util.Scanner;
 import java.util.regex.*;
 
 public class Terminal {
 
   private static final StringLiterals literals = new StringLiterals();
-  private String command = "";
+  private String command;
   private String userName = "";
   private String computerName = "";
+
   public Terminal(){
     setUserDetails();
     System.out.println(literals.BLANK_SCREEN);
@@ -23,6 +25,7 @@ public class Terminal {
     DateTimeGroup.datePrompt();
     System.out.print(getUserDetails() + literals.ACCESS_LEVEL);
     Scanner sc = new Scanner(System.in);
+    setCommand(sc.next());
     while(!command.equals(Commands.EXIT.command())){
       System.out.print(getUserDetails() + literals.ACCESS_LEVEL);
       setCommand(sc.next());
@@ -39,7 +42,7 @@ public class Terminal {
         Commands.LIST_DIRECTORIES.execute();
         break;
       case "pwd":
-        Commands.PRINT_WORKING_DIRECTORY.execute();
+        System.out.printf("%s%s%n", literals.PWD, getUserName());
         break;
       case "touch":
         Commands.TOUCH.execute();
@@ -82,7 +85,4 @@ public class Terminal {
     this.computerName = computerName;
     System.out.println(literals.BLANK_SCREEN);
   }
-
-
-
 }

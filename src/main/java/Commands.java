@@ -51,7 +51,7 @@ public enum Commands {
 
     @Override
     public void execute() {
-
+      System.out.println(literals.PWD);
     }
   },
   TOUCH("touch") {
@@ -92,7 +92,7 @@ public enum Commands {
   public String command() {
     return command;
   }
-  public abstract String description();
 
+  public abstract String description();
   public abstract void execute();
 }
