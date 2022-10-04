@@ -10,7 +10,7 @@ public class Terminal {
   private String computerName = "";
   public Terminal(){
     setUserDetails();
-    System.out.println(literals.BLANKSCREEN);
+    System.out.println(literals.BLANK_SCREEN);
     startTerminal();
   }
 
@@ -20,11 +20,11 @@ public class Terminal {
 
   public void startTerminal(){
     DateTimeGroup.datePrompt();
-    System.out.print(getUserDetails() + " ~ %");
+    System.out.print(getUserDetails() + literals.ACCESS_LEVEL);
     Scanner sc = new Scanner(System.in);
     setCommand(sc.next());
     while(!command.equals(Commands.EXIT.command())){
-      System.out.print(getUserDetails() + " ~ %");
+      System.out.print(getUserDetails() + literals.ACCESS_LEVEL);
       setCommand(sc.next());
     }
     exit();
@@ -56,13 +56,13 @@ public class Terminal {
     System.out.println(literals.WELCOME);
     System.out.println();
     Scanner sc= new Scanner(System.in);
-    System.out.println("Please enter your User Name: ");
+    System.out.println(literals.USER_PROMPT);
     String userName = sc.next();
-    System.out.println("Please enter your Computer Name: ");
+    System.out.println(literals.COMPUTER_PROMPT);
     String computerName = sc.next();
     this.userName = userName;
     this.computerName = computerName;
-    System.out.println(literals.BLANKSCREEN);
+    System.out.println(literals.BLANK_SCREEN);
   }
 
 
