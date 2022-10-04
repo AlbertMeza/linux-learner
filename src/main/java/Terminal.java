@@ -6,7 +6,7 @@ import java.util.regex.*;
 public class Terminal {
 
   private static final StringLiterals literals = new StringLiterals();
-  private String command;
+  private String command = "";
   private String userName = "";
   private String computerName = "";
   public Terminal(){
@@ -23,32 +23,30 @@ public class Terminal {
     DateTimeGroup.datePrompt();
     System.out.print(getUserDetails() + literals.ACCESS_LEVEL);
     Scanner sc = new Scanner(System.in);
-    setCommand(sc.next());
     while(!command.equals(Commands.EXIT.command())){
       System.out.print(getUserDetails() + literals.ACCESS_LEVEL);
       setCommand(sc.next());
-      commandAction(sc.next());
+      commandAction(getCommand());
     }
   }
 
   public void commandAction(String command) {
-//    System.out.println("Please enter your next command: ");
     switch (command) {
       case "clear":
         Commands.CLEAR.execute();
         break;
+     case "ls":
+        Commands.LIST_DIRECTORIES.execute();
+        break;
+      case "pwd":
+        Commands.PRINT_WORKING_DIRECTORY.execute();
+        break;
+      case "touch":
+        Commands.TOUCH.execute();
+        break;
       case "exit":
         Commands.EXIT.execute();
         break;
-//      case "ls":
-//        lsCommand();
-//        break;
-//      case "pwd":
-//        pwdCommand(sc.next());
-//        break;
-//      case "touch":
-//        touchCommand();
-//        break;
       default:
         System.out.println("Incorrect command");
     }
