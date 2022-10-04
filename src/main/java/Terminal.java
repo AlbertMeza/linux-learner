@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Scanner;
+import java.util.regex.*;
 
 public class Terminal {
 
@@ -28,6 +29,35 @@ public class Terminal {
       setCommand(sc.next());
     }
     exit();
+  }
+
+  public void commandAction() {
+    System.out.println("Please enter your next command: ");
+    Scanner sc= new Scanner(System.in);
+    switch (sc.next()){
+      case "clear":
+        clearCommand();
+        break;
+      case "exit":
+        exit();
+        break;
+      case "ls":
+        lsCommand();
+        break;
+      case "pwd":
+        pwdCommand(sc.next());
+        break;
+      case "touch":
+        touchCommand();
+        break;
+      default:
+        System.out.println("Incorrect command");
+    }
+
+  }
+
+  public void clearCommand () {
+    System.out.println(literals.BLANKSCREEN);
   }
 
   public void exit(){
