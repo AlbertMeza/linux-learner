@@ -31,8 +31,11 @@ public class Terminal {
   }
 
   public void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop
-    String splitCommand[] = command.split("\\s",2);
+    String[] splitCommand = command.split("//s", 2);
     switch (splitCommand[0]) {
+      case "cd":
+        // TODO: 10/4/2022 implement cd command
+        break;
       case "clear":
         Commands.CLEAR.execute();
         break;
@@ -43,7 +46,7 @@ public class Terminal {
         System.out.printf("%s%s%n", literals.PWD, getUserName());
         break;
       case "touch":
-        System.out.println("You need to specify what you want to use with the touch command.");
+        Commands.TOUCH.execute();
         break;
       case "exit":
         Commands.EXIT.execute();
@@ -51,7 +54,7 @@ public class Terminal {
       case "help":
         commandDescription("ls");
         break;
-      default:
+        default:
         System.out.println("Incorrect command");
     }
   }
@@ -60,7 +63,7 @@ public class Terminal {
 
 
 
-  public void commandDescription(String Command) { //intended to be used as a help desk
+  public void commandDescription(String command) { //intended to be used as a help desk
     switch (command) {
       case "clear":
         Commands.CLEAR.description();

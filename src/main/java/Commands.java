@@ -62,7 +62,7 @@ public enum Commands {
 
     @Override
     public void execute() {
-      //System.out.println(literals.TOUCH);
+      System.out.println(literals.DIRECTORY_CONTENTS + command());;
     }
   };
 
@@ -81,8 +81,7 @@ public enum Commands {
     for(int i = 1; i < name.length(); i++){
       if(name.charAt(i) == '_') {
         printedName += ' ';
-      }
-      else {
+      } else {
         printedName += name.charAt(i);
       }
     }
