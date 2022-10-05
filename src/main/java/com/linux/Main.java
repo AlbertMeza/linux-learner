@@ -1,6 +1,6 @@
-package com.linux.view;
+package com.linux;
 
-import com.linux.controller.*;
+import com.linux.model.Terminal;
 
 //TODO javadocs then maybe a test class
 public class Main {

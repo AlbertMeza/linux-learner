@@ -1,4 +1,4 @@
-package com.linux.controller;
+package com.linux.view;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
