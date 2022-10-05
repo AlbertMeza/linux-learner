@@ -1,6 +1,7 @@
 package com.linux;
 
-import com.linux.model.Terminal;
+
+import com.linux.controller.Terminal;
 
 /**
  * Implements entry point for <strong>Linux Learner</strong>, a terminal built from Java!
