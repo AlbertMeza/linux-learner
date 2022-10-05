@@ -12,7 +12,7 @@ public enum Commands {
 
     @Override
     public void execute() {
-
+      //empty on purpose
     }
   },
   CLEAR("clear") {
@@ -85,6 +85,7 @@ public enum Commands {
 
   private static final StringLiterals literals = new StringLiterals();
   private final String command;
+
 
 
   Commands(String command){

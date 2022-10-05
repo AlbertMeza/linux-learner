@@ -1,6 +1,5 @@
-package com.linux.controller;
+package com.linux.model;
 
-import java.awt.Desktop;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +7,17 @@ import java.util.List;
 //TODO javadocs and ABC the create{}controller.Directory
 public class Directory {
 
-  public List<String> createHomeDirectory(){
+  private final List<String> homeDirectory;
+
+  public Directory() {
+    homeDirectory = createHomeDirectory();
+  }
+
+  public List<String> getHomeDirectory() {
+    return homeDirectory;
+  }
+
+  private List<String> createHomeDirectory(){
     return Arrays.asList(
         "Pictures",
         "Desktop",
@@ -96,9 +105,9 @@ public class Directory {
   }
 
   public static String printDirectory(LinkedList<String> list){
-    StringBuilder directoryList = new StringBuilder(list.get(0) + "\t");
+    StringBuilder directoryList = new StringBuilder(list.get(0) + "\n");
     for(int i = 1; i < list.size(); i++){
-      directoryList.append(list.get(i)).append("\t");
+      directoryList.append(list.get(i)).append("\n");
     }
     return directoryList.toString();
   }
