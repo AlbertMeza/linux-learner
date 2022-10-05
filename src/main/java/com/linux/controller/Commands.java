@@ -1,3 +1,4 @@
+package com.linux.controller;
 
 //TODO JAVA DOCS
 public enum Commands {
@@ -34,6 +35,17 @@ public enum Commands {
       System.out.println(literals.EXIT);
     }
   },
+  HELP("help") {
+    @Override
+    public String description() {
+      return literals.HELP_DESCRIPTION;
+    }
+
+    @Override
+    public void execute() {
+      System.out.println(literals.HELP);
+    }
+  },
   LIST_DIRECTORIES("ls") {
     @Override
     public String description() {
@@ -64,6 +76,7 @@ public enum Commands {
 
     @Override
     public void execute() {
+      System.out.println(literals.TOUCH_INVALID);
     }
   };
 
