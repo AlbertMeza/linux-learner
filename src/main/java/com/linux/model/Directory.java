@@ -21,6 +21,10 @@ public class Directory {
     desktopDirectory = createDesktopDirectory();
     libraryDirectory = createLibraryDirectory();
     moviesDirectory = createMoviesDirectory();
+    documentDirectory = createDocumentsDirectory();
+    publicDirectory = createPublicDirectory();
+    pictureDirectory = createPictureDirectory();
+    downloadDirectory = createDownloadsDirectory();
 
   }
 //getters
@@ -38,6 +42,22 @@ public class Directory {
 
   public List<String> getMoviesDirectory() {
     return moviesDirectory;
+  }
+
+  public List<String> getDocumentDirectory() {
+    return documentDirectory;
+  }
+
+  public List<String> getPublicDirectory() {
+    return publicDirectory;
+  }
+
+  public List<String> getPictureDirectory() {
+    return pictureDirectory;
+  }
+
+  public List<String> getDownloadDirectory() {
+    return downloadDirectory;
   }
 
   private List<String> createHomeDirectory(){
@@ -83,46 +103,44 @@ public class Directory {
     );
   }
 
-
-  public List<String> createDocumentsDirectory() {
-    LinkedList<String> documents = new LinkedList<>();
-    documents.add("Computers aren’t magic!");
-    documents.add("Head First Java");
-    documents.add("THE KEYBOARD IS YOUR FRIEND");
-    documents.add("Why the mouse is not your friend");
-    documents.add("Top 10 reasons I hate Xfinity");
-    documents.add("Tips and Tricks(Have you read it yet?)");
-
-    return documents;
+  private List<String> createDocumentsDirectory() {
+    return Arrays.asList(
+        "Computers aren’t magic!",
+        "Head First Java",
+        "THE KEYBOARD IS YOUR FRIEND",
+        "Why the mouse is not your friend",
+        "Top 10 reasons I hate Xfinity",
+        "Tips and Tricks(Have you read it yet?)"     );
   }
 
-  public List<String> createPublicDirectory() {
-    LinkedList<String> publix = new LinkedList<>();//publix because public is a keyword
-    publix.add("Public speaking event");
-    publix.add("Java: coffee not code");
-    publix.add("From Cradle to Gradle: Teaching babies to code");
-    publix.add("Reminder to give Giovanni, Albert, And Anthony a high five");
-    publix.add("Proposal for Coraline: Dead Threads");
 
-    return publix;
+
+  private List<String> createPublicDirectory() {
+    return Arrays.asList(
+        "Public speaking event",
+        "Java: coffee not code",
+        "From Cradle to Gradle: Teaching babies to code",
+        "Reminder to give Giovanni, Albert, And Anthony a high five",
+        "Proposal for Coraline: Dead Threads"     );
   }
 
-  public List<String> createPictureDirectory(){
-    LinkedList<String> picture = new LinkedList<>();
-    picture.add("Cats");
-    picture.add("LinkedIn.JPEG");
-    picture.add("Screenshots");
 
-    return picture;
+
+  private List<String> createPictureDirectory(){
+    return Arrays.asList(
+        "Cats",
+        "LinkedIn.JPEG",
+        "Screenshots"     );
   }
 
-  public List<String> createDownloadsDirectory(){
-    LinkedList<String> downloads = new LinkedList<>();
-    downloads.add("League of Legends");
-    downloads.add("Spotify");
 
-    return downloads;
+
+  private List<String> createDownloadsDirectory(){
+    return Arrays.asList(
+        "League of Legends",
+        "Spotify"     );
   }
+
 
   public static String printDirectory(LinkedList<String> list){
     StringBuilder directoryList = new StringBuilder(list.get(0) + "\n");
