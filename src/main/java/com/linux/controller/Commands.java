@@ -1,5 +1,7 @@
 package com.linux.controller;
 
+import com.linux.view.StringLiterals;
+
 //TODO JAVA DOCS
 public enum Commands {
   CHANGE_DIRECTORY("cd") { //must have an internal state these commands execute against (Virtual file tracker made in a different class)
@@ -10,7 +12,7 @@ public enum Commands {
 
     @Override
     public void execute() {
-
+      //empty on purpose
     }
   },
   CLEAR("clear") {
@@ -83,6 +85,7 @@ public enum Commands {
 
   private static final StringLiterals literals = new StringLiterals();
   private final String command;
+
 
 
   Commands(String command){

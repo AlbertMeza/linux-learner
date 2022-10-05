@@ -1,19 +1,24 @@
-package com.linux.controller;
+package com.linux.model;
 
+import com.linux.controller.Commands;
+import com.linux.view.DateTimeGroup;
+import com.linux.view.StringLiterals;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
+
 
 //TODO need a javadocs description
 public class Terminal {
 
-  private static final StringLiterals literals = new StringLiterals(); //used to import all string literals
-  private final LinkedList<String> homeDirectory = Directory.createHomeDirectory(); //the home directory never changes from \Users\[username]
+  private final Directory directory = new Directory();
+  private final List<String> homeDirectory = directory.getHomeDirectory(); //the home directory never changes from \Users\[username]
   private LinkedList<String> currentDirectory; //used to track the current directory
   private String command = "";
   private String userName = "";
   private String computerName = "";
 
-  private String pwdString = literals.PWD;
+  private String pwdString = StringLiterals.PWD;
 
   public Terminal(){
     setUserDetails();
@@ -25,12 +30,16 @@ public class Terminal {
     DateTimeGroup.datePrompt();
     Scanner sc = new Scanner(System.in);
     while(!command.equals(Commands.EXIT.command())){
-      System.out.print(getUserDetails() + literals.ACCESS_LEVEL);
+      System.out.print(getUserDetails() + StringLiterals.ACCESS_LEVEL);
       setCommand(sc.nextLine()); //talking point
       commandAction(getCommand());
     }
   }
 
+  /**
+   *
+   * @param command
+   */
   public void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop //TODO put the switch statement in ABC order
     if (command.contains(" ")) { //multi commands
       String[] splitCommand = command.split("\\s");
@@ -48,7 +57,7 @@ public class Terminal {
           changeDirectory(commandTwo);
           break;
         default:
-          System.out.println(literals.INVALID_COMMAND);
+          System.out.println(StringLiterals.INVALID_COMMAND);
       }
     } else { //solo command
       switch (command) { //TODO discuss a {help me} command
@@ -65,21 +74,30 @@ public class Terminal {
           Commands.EXIT.execute();
           break;
         case "help":
-          System.out.println(literals.HELP);
+          Commands.HELP.execute();
           break;
         case "touch":
           Commands.TOUCH.execute();
           break;
         default:
-          System.out.println(literals.INVALID_COMMAND);
+          System.out.println(StringLiterals.INVALID_COMMAND);
       }
     }
   }
 
   public void commandDescription(String command) { //TODO abc order
     switch (command) {
+      case "cd":
+        System.out.println(Commands.CHANGE_DIRECTORY.description());
+        break;
       case "clear":
         System.out.println(Commands.CLEAR.description());
+        break;
+      case "exit":
+        System.out.println(Commands.EXIT.description());
+        break;
+      case "help":
+        System.out.println(Commands.HELP.description());
         break;
       case "ls":
         System.out.println(Commands.LIST_DIRECTORIES.description());
@@ -90,17 +108,14 @@ public class Terminal {
       case "touch":
         System.out.println(Commands.TOUCH.description());
         break;
-      case "exit":
-        System.out.println(Commands.EXIT.description());
-        break;
       default:
-        System.out.println(literals.HELP_INVALID);
+        System.out.println(StringLiterals.HELP_INVALID);
     }
   }
 
   public void addToDirectory(String file){
     if(currentDirectory.contains(file)){
-      System.out.printf("This directory already has a file named %s\n", file); //TODO change to string literal, also look up unix terminal error
+      System.out.printf(StringLiterals.FILE_ERROR, file); //TODO change to string literal, also look up unix terminal error
     }
     else {
       currentDirectory.add(file);
@@ -143,12 +158,12 @@ public class Terminal {
       setPwdString(homePWD()+dir+"/");
     }
     else {
-      System.out.println(literals.INVALID_CD); //TODO also look up unix terminal error for matching
+      System.out.println(StringLiterals.INVALID_CD + dir); //TODO also look up unix terminal error for matching
     }
   }
 
   public String homePWD(){
-    return literals.PWD + getUserName() + "/";
+    return StringLiterals.PWD + getUserName() + "/";
   }
 
 
@@ -196,17 +211,17 @@ public class Terminal {
   }
 
   private void setUserDetails() { //this acts as the setter for both userName and computerName
-    System.out.println(literals.WELCOME);
+    System.out.println(StringLiterals.WELCOME);
     System.out.println();
     Scanner sc= new Scanner(System.in);
-    System.out.println(literals.USER_PROMPT);
+    System.out.println(StringLiterals.USER_PROMPT);
     String userName = sc.next();
-    System.out.println(literals.COMPUTER_PROMPT);
+    System.out.println(StringLiterals.COMPUTER_PROMPT);
     String computerName = sc.next();
     setUserName(userName);
     setPwdString(homePWD());
     setComputerName(computerName);
-    System.out.println(literals.BLANK_SCREEN);
+    System.out.println(StringLiterals.BLANK_SCREEN);
   }
 
 
