@@ -1,86 +1,161 @@
 import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.regex.*;
 
+//TODO need a javadocs description
 public class Terminal {
 
-  private static final StringLiterals literals = new StringLiterals();
-  private static final LinkedList<String> homeDirectory = Directory.createHomeDirectory();
-  private LinkedList<String> currentDirectory;
+  private static final StringLiterals literals = new StringLiterals(); //used to import all string literals
+  private final LinkedList<String> homeDirectory = Directory.createHomeDirectory(); //the home directory never changes from \Users\[username]
+  private LinkedList<String> currentDirectory; //used to track the current directory
   private String command = "";
   private String userName = "";
   private String computerName = "";
+
+  private String pwdString = literals.PWD;
+
   public Terminal(){
     setUserDetails();
-    setCurrentDirectory(Directory.createHomeDirectory());
-    startTerminal();
-  }
-
-  public String getUserDetails() {
-    return getUserName()+"@"+getComputerName();
+    setCurrentDirectory(homeDirectory);
   }
 
   public void startTerminal(){
+    System.out.println("if unknown where to start try {help} then enter"); //TODO customize this
     DateTimeGroup.datePrompt();
     Scanner sc = new Scanner(System.in);
     while(!command.equals(Commands.EXIT.command())){
       System.out.print(getUserDetails() + literals.ACCESS_LEVEL);
-      setCommand(sc.next());
+      setCommand(sc.nextLine()); //talking point
       commandAction(getCommand());
     }
   }
 
-  public void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop
-    String splitCommand[] = command.split("\\s",2);
-    switch (splitCommand[0]) {
-      case "clear":
-        Commands.CLEAR.execute();
-        break;
-     case "ls":
-        Commands.LIST_DIRECTORIES.execute();
-        break;
-      case "pwd":
-        System.out.printf("%s%s%n", literals.PWD, getUserName());
-        break;
-      case "touch":
-        System.out.println("You need to specify what you want to use with the touch command.");
-        break;
-      case "exit":
-        Commands.EXIT.execute();
-        break;
-      case "help":
-        commandDescription("ls");
-        break;
-      default:
-        System.out.println("Incorrect command");
+  public void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop //TODO put the switch statement in ABC order
+    if (command.contains(" ")) { //multi commands
+      String[] splitCommand = command.split("\\s");
+      String commandOne = splitCommand[0];
+      String commandTwo = splitCommand[1];
+
+      switch (commandOne) {
+        case "touch":
+          addToDirectory(commandTwo); //maybe talk rules here, add logic
+          break;
+        case "help":
+          commandDescription(commandTwo);
+          break;
+        case "cd":
+          changeDirectory(commandTwo);
+          break;
+        default:
+          System.out.println("Incorrect command");
+      }
+    } else { //solo command
+      switch (command) { //TODO discuss a {help me} command
+        case "clear":
+          Commands.CLEAR.execute();
+          break;
+        case "ls":
+          System.out.println(Directory.printDirectory(currentDirectory));
+          break;
+        case "pwd":
+          System.out.println(getPwdString());
+          break;
+        case "exit":
+          Commands.EXIT.execute();
+          break;
+        case "help":
+          System.out.println(literals.HELP); //TODO add a new string literal ("help" should be different from "help me")
+        case "touch":
+          System.out.println("You need to specify what you want to use with the touch command."); //TODO add to string literal
+          break;
+        default:
+          System.out.println("Incorrect command");
+      }
     }
   }
 
-  //if(help) is used then they can type the commmand they want help with down below
-
-
-
-  public void commandDescription(String Command) { //intended to be used as a help desk
+  public void commandDescription(String command) { //TODO abc order
     switch (command) {
       case "clear":
-        Commands.CLEAR.description();
+        System.out.println(Commands.CLEAR.description());
         break;
       case "ls":
-        Commands.LIST_DIRECTORIES.description();
+        System.out.println(Commands.LIST_DIRECTORIES.description());
         break;
       case "pwd":
-        Commands.PRINT_WORKING_DIRECTORY.description();
+        System.out.println(Commands.PRINT_WORKING_DIRECTORY.description());
         break;
       case "touch":
-        Commands.TOUCH.description();
+        System.out.println(Commands.TOUCH.description());
         break;
       case "exit":
-        Commands.EXIT.description();
+        System.out.println(Commands.EXIT.description());
         break;
       default:
-        System.out.println("help for that command is not available. You may use clear, ls, pwd, touch, or exit");
-        //// TODO: 10/4/2022 make constant
+        System.out.println(literals.HELP);
     }
+  }
+
+  public void addToDirectory(String file){
+    if(currentDirectory.contains(file)){
+      System.out.printf("This directory already has a file named %s\n", file); //TODO change to string literal, also look up unix terminal error
+    }
+    else {
+      currentDirectory.add(file);
+    }
+  }
+
+  public void changeDirectory(String dir){
+    if (dir.equals("~")){
+      setCurrentDirectory(homeDirectory);
+      setPwdString(homePWD());
+    }
+    else if(getCurrentDirectory().contains(dir)){
+      //cd
+      switch(dir) {
+        case "Desktop": //TODO encapsulate these and look at them to see if you guys want changes into any of these
+          setCurrentDirectory(Directory.changeDirectory(dir));
+          break;
+        case "Pictures":
+          currentDirectory = Directory.createPictureDirectory();
+          break;
+        case "Public":
+          currentDirectory = Directory.createPublicDirectory();
+          break;
+        case "Documents":
+          currentDirectory = Directory.createDocumentsDirectory();
+          break;
+        case "Downloads":
+          currentDirectory = Directory.createDownloadsDirectory();
+          break;
+        case "Library":
+          currentDirectory = Directory.createLibraryDirectory();
+          break;
+        case "Movies":
+          currentDirectory = Directory.createMoviesDirectory();
+          break;
+        default:
+          break;
+      }
+      //change pwd
+      setPwdString(homePWD()+dir+"/");
+    }
+    else {
+      System.out.println(literals.INVALID_CD); //TODO also look up unix terminal error for matching
+    }
+  }
+
+  public String homePWD(){
+    return literals.PWD + getUserName() + "/";
+  }
+
+
+  public LinkedList<String> getCurrentDirectory() {
+    return this.currentDirectory;
+  }
+
+
+  private void setCurrentDirectory(LinkedList<String> currentDirectory) {
+    this.currentDirectory = currentDirectory;
   }
 
   public String getCommand() {
@@ -95,11 +170,29 @@ public class Terminal {
     return userName;
   }
 
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
+
   private String getComputerName() {
     return computerName;
   }
+  public void setComputerName(String computerName) {
+    this.computerName = computerName;
+  }
 
-  private void setUserDetails() {
+  public String getPwdString() {
+    return pwdString;
+  }
+
+  public void setPwdString(String pwdString) {
+    this.pwdString = pwdString;
+  }
+  public String getUserDetails() {
+    return getUserName()+"@"+getComputerName();
+  }
+
+  private void setUserDetails() { //this acts as the setter for both userName and computerName
     System.out.println(literals.WELCOME);
     System.out.println();
     Scanner sc= new Scanner(System.in);
@@ -107,17 +200,10 @@ public class Terminal {
     String userName = sc.next();
     System.out.println(literals.COMPUTER_PROMPT);
     String computerName = sc.next();
-    this.userName = userName;
-    this.computerName = computerName;
+    setUserName(userName);
+    setPwdString(homePWD());
+    setComputerName(computerName);
     System.out.println(literals.BLANK_SCREEN);
-  }
-
-  public LinkedList<String> getCurrentDirectory() {
-    return this.currentDirectory;
-  }
-
-  private void setCurrentDirectory(LinkedList<String> currentDirectory) {
-    this.currentDirectory = currentDirectory;
   }
 
 

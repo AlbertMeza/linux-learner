@@ -1,9 +1,7 @@
 import java.util.LinkedList;
-import org.w3c.dom.Node;
 
+//TODO javadocs and ABC the create{}Directory
 public class Directory {
-
-  LinkedList<String> currentDirectory = createHomeDirectory();
 
   public static LinkedList<String> createHomeDirectory(){
     LinkedList<String> home = new LinkedList<>();
@@ -94,27 +92,15 @@ public class Directory {
   }
 
   public static String printDirectory(LinkedList<String> list){
-    String directoryList = list.get(0) + " ";
+    StringBuilder directoryList = new StringBuilder(list.get(0) + " ");
     for(int i = 1; i < list.size(); i++){
-      directoryList += list.get(i) + " ";
+      directoryList.append(list.get(i)).append(" ");
     }
-    return directoryList;
+    return directoryList.toString();
   }
 
-  public LinkedList<String> getCurrentDirectory() {
-    return currentDirectory;
-  }
 
-  public void hasDirectory(String directory){
-    if (currentDirectory.contains(directory)){
-      changeDirectory(directory);
-    }
-    else {
-      System.out.println();
-    }
-  }
-
-  public LinkedList<String> changeDirectory(String directory){
+  public static LinkedList<String> changeDirectory(String directory){ //TODO look into switch short hand (desktop) => createDesktopDirectory(), it's something like this
     switch(directory) {
       case "Desktop":
         return createDesktopDirectory();
@@ -131,7 +117,7 @@ public class Directory {
       case "Movies":
         return createMoviesDirectory();
     }
-    return getCurrentDirectory();
+    return createHomeDirectory();
   }
 }
 

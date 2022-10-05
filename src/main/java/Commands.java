@@ -1,3 +1,5 @@
+
+//TODO JAVA DOCS
 public enum Commands {
   CHANGE_DIRECTORY("cd") { //must have an internal state these commands execute against (Virtual file tracker made in a different class)
     @Override
@@ -62,7 +64,6 @@ public enum Commands {
 
     @Override
     public void execute() {
-      //System.out.println(literals.TOUCH);
     }
   };
 
@@ -77,16 +78,16 @@ public enum Commands {
 
   public String toString() {
     String name = name().toLowerCase();
-    String printedName = ("" + name.charAt(0)).toUpperCase();
+    StringBuilder printedName = new StringBuilder(("" + name.charAt(0)).toUpperCase());
     for(int i = 1; i < name.length(); i++){
       if(name.charAt(i) == '_') {
-        printedName += ' ';
+        printedName.append(' ');
       }
       else {
-        printedName += name.charAt(i);
+        printedName.append(name.charAt(i));
       }
     }
-    return printedName;
+    return printedName.toString();
   }
 
   public String command() {

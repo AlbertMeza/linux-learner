@@ -1,4 +1,5 @@
-public class StringLiterals {
+//TODO Javadocs
+public class StringLiterals { //TODO 1) categorize them 2) ABC by category
   public final String ACCESS_LEVEL = (" ~ % ");
   public final String BLANK_SCREEN = ("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
@@ -18,10 +19,11 @@ public class StringLiterals {
   public final String LS_DESCRIPTION = ("List Directory Contents (ls):  List information about the FILEs (the current directory by default)./n Sort entries alphabetically if no order specified");
 
   public final String EXIT_DESCRIPTION = ("Exit: Disconnects ssh user and Exits the terminal");
+  public final String HELP = ("help for that command is not available. You may use clear, ls, pwd, touch, or exit");
 
   public final String PWD_DESCRIPTION = ("Print Working Directory (pwd): Print the full filename of the current working directory.");
 
-  public final String TOUCH_DESCRIPTION = ("Update the access and modification times of each FILE to the current time. /n A FILE argument that does not exist is created empty\n");
+  public final String TOUCH_DESCRIPTION = ("Update the access and modification times of each FILE to the current time. /n A FILE argument that does not exist is created empty\n");//TODO clean these up
 
   public final String CD_DESCRIPTION = ("Change Directory (cd): Change the current directory user is in to requested directory./n Note: user may not have permissions to access all Directories");
 
