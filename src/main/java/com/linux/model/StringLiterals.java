@@ -1,4 +1,4 @@
-package com.linux.controller;
+package com.linux.model;
 
 //TODO Javadocs
 public class StringLiterals { //TODO 1) categorize them 2) ABC by category

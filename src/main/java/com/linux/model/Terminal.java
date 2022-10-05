@@ -1,5 +1,7 @@
-package com.linux.controller;
+package com.linux.model;
 
+import com.linux.controller.Commands;
+import com.linux.controller.Directory;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -65,7 +67,7 @@ public class Terminal {
           Commands.EXIT.execute();
           break;
         case "help":
-          System.out.println(literals.HELP);
+          Commands.HELP.execute();
           break;
         case "touch":
           Commands.TOUCH.execute();
