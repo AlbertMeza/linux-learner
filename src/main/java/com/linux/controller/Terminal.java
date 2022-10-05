@@ -1,12 +1,15 @@
-package com.linux.model;
+package com.linux.controller;
 
 import com.linux.controller.Commands;
 import com.linux.controller.Directory;
+import com.linux.model.DateTimeGroup;
+import com.linux.model.StringLiterals;
+import com.linux.view.UserTerminal;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 //TODO need a javadocs description
-public class Terminal {
+public class Terminal implements UserTerminal {
 
   private static final StringLiterals literals = new StringLiterals(); //used to import all string literals
   private final LinkedList<String> homeDirectory = Directory.createHomeDirectory(); //the home directory never changes from \Users\[username]
