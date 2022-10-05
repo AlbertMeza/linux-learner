@@ -1,21 +1,23 @@
 package com.linux.controller;
 
+import java.awt.Desktop;
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
 //TODO javadocs and ABC the create{}controller.Directory
 public class Directory {
 
-  public static LinkedList<String> createHomeDirectory(){
-    LinkedList<String> home = new LinkedList<>();
-    home.add("Pictures");
-    home.add("Desktop"); //complete
-    home.add("Public");
-    home.add("Documents");
-    home.add("Downloads");
-    home.add("Library");
-    home.add("Movies");
-
-    return home;
+  public List<String> createHomeDirectory(){
+    return Arrays.asList(
+        "Pictures",
+        "Desktop",
+        "Public",
+        "Documents",
+        "Downloads",
+        "Library",
+        "Movies"
+    );
   }
 
   public static LinkedList<String> createDesktopDirectory(){
@@ -94,9 +96,9 @@ public class Directory {
   }
 
   public static String printDirectory(LinkedList<String> list){
-    StringBuilder directoryList = new StringBuilder(list.get(0) + " ");
+    StringBuilder directoryList = new StringBuilder(list.get(0) + "\t");
     for(int i = 1; i < list.size(); i++){
-      directoryList.append(list.get(i)).append(" ");
+      directoryList.append(list.get(i)).append("\t");
     }
     return directoryList.toString();
   }
