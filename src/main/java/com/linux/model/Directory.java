@@ -8,13 +8,36 @@ import java.util.List;
 public class Directory {
 
   private final List<String> homeDirectory;
+  private final List<String> desktopDirectory;
+  private final List<String> libraryDirectory;
+  private final List<String> moviesDirectory;
+  private final List<String> documentDirectory;
+  private final List<String> publicDirectory;
+  private final List<String> pictureDirectory;
+  private final List<String> downloadDirectory;
 
-  public Directory() {
+  public Directory() {//ctor 
     homeDirectory = createHomeDirectory();
-  }
+    desktopDirectory = createDesktopDirectory();
+    libraryDirectory = createLibraryDirectory();
+    moviesDirectory = createMoviesDirectory();
 
+  }
+//getters
   public List<String> getHomeDirectory() {
     return homeDirectory;
+  }
+
+  public List<String> getDesktopDirectory() {
+    return desktopDirectory;
+  }
+
+  public List<String> getLibraryDirectory() {
+    return libraryDirectory;
+  }
+
+  public List<String> getMoviesDirectory() {
+    return moviesDirectory;
   }
 
   private List<String> createHomeDirectory(){
@@ -29,42 +52,39 @@ public class Directory {
     );
   }
 
-  public static LinkedList<String> createDesktopDirectory(){
-    LinkedList<String> desktop = new LinkedList<>();
-    desktop.add("IDEs");
-    desktop.add("Jackbox Party Pack");
-    desktop.add("Homework");
-
-    return desktop;
+  public List<String> createDesktopDirectory(){
+    return Arrays.asList(
+        "IDEs",
+        "Jackbox Party Pack",
+        "Homework"
+    );
   }
 
-  public static LinkedList<String> createLibraryDirectory(){
-    LinkedList<String> library = new LinkedList<>();
-    library.add("Head First Java");
-    library.add("Java: A Beginner's Guide");
-    library.add("Java: The Complete Reference");
-    library.add("Core Java");
-    library.add("Effective Java");
-    library.add("Design Patterns: Elements of Reusable Object-Oriented Software");
-    library.add("Head First Design Patterns ");
-
-    return library;
+  public List<String> createLibraryDirectory(){
+    return Arrays.asList(
+        "Head First Java",
+        "Java: A Beginner's Guide",
+        "Java: The Complete Reference",
+        "Core Java",
+        "Effective Java",
+        "Design Patterns: Elements of Reusable Object-Oriented Software",
+        "Head First Design Patterns"
+    );
   }
 
-  public static LinkedList<String> createMoviesDirectory(){
-    LinkedList<String> movies = new LinkedList<>();
-    movies.add("Spinal Tap");
-    movies.add("Avatar");
-    movies.add("Avengers: Endgame");
-    movies.add("Star Wars: Revenge of the Sith");
-    movies.add("Titanic");
-    movies.add("The Dark Knight");
-
-    return movies;
+  public List<String> createMoviesDirectory(){
+    return Arrays.asList(
+        "The Dark Knight",
+        "Titanic",
+        "Star Wars: Revenge of the Sith",
+        "Spinal Tap",
+        "Avatar",
+        "Avengers: Endgame"
+    );
   }
 
 
-  public static LinkedList<String> createDocumentsDirectory() {
+  public List<String> createDocumentsDirectory() {
     LinkedList<String> documents = new LinkedList<>();
     documents.add("Computers aren’t magic!");
     documents.add("Head First Java");
@@ -76,7 +96,7 @@ public class Directory {
     return documents;
   }
 
-  public static LinkedList<String> createPublicDirectory() {
+  public List<String> createPublicDirectory() {
     LinkedList<String> publix = new LinkedList<>();//publix because public is a keyword
     publix.add("Public speaking event");
     publix.add("Java: coffee not code");
@@ -87,7 +107,7 @@ public class Directory {
     return publix;
   }
 
-  public static LinkedList<String> createPictureDirectory(){
+  public List<String> createPictureDirectory(){
     LinkedList<String> picture = new LinkedList<>();
     picture.add("Cats");
     picture.add("LinkedIn.JPEG");
@@ -96,7 +116,7 @@ public class Directory {
     return picture;
   }
 
-  public static LinkedList<String> createDownloadsDirectory(){
+  public List<String> createDownloadsDirectory(){
     LinkedList<String> downloads = new LinkedList<>();
     downloads.add("League of Legends");
     downloads.add("Spotify");
@@ -113,7 +133,7 @@ public class Directory {
   }
 
 
-  public static LinkedList<String> changeDirectory(String directory){ //TODO look into switch short hand (desktop) => createDesktopDirectory(), it's something like this
+  public List<String> changeDirectory(String directory){ //TODO look into switch short hand (desktop) => createDesktopDirectory(), it's something like this
     switch(directory) {
       case "Desktop":
         return createDesktopDirectory();
