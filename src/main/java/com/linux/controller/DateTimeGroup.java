@@ -1,12 +1,11 @@
-import java.text.SimpleDateFormat;
-import java.time.*;
-import java.time.format.*;
-import java.util.Date;
+package com.linux.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+//TODO javadocs
 public class DateTimeGroup {
 
   public static void datePrompt() {
-
     Date date = new Date();
     SimpleDateFormat prompt = new SimpleDateFormat("EEE MMM  d HH:mm:ss");
     String today = prompt.format(date);
