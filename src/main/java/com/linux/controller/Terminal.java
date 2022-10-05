@@ -1,3 +1,5 @@
+package com.linux.controller;
+
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -46,7 +48,7 @@ public class Terminal {
           changeDirectory(commandTwo);
           break;
         default:
-          System.out.println("Incorrect command");
+          System.out.println(literals.INVALID_COMMAND);
       }
     } else { //solo command
       switch (command) { //TODO discuss a {help me} command
@@ -63,12 +65,13 @@ public class Terminal {
           Commands.EXIT.execute();
           break;
         case "help":
-          System.out.println(literals.HELP); //TODO add a new string literal ("help" should be different from "help me")
+          System.out.println(literals.HELP);
+          break;
         case "touch":
-          System.out.println("You need to specify what you want to use with the touch command."); //TODO add to string literal
+          Commands.TOUCH.execute();
           break;
         default:
-          System.out.println("Incorrect command");
+          System.out.println(literals.INVALID_COMMAND);
       }
     }
   }
@@ -91,7 +94,7 @@ public class Terminal {
         System.out.println(Commands.EXIT.description());
         break;
       default:
-        System.out.println(literals.HELP);
+        System.out.println(literals.HELP_INVALID);
     }
   }
 

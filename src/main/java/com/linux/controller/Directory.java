@@ -1,6 +1,8 @@
+package com.linux.controller;
+
 import java.util.LinkedList;
 
-//TODO javadocs and ABC the create{}Directory
+//TODO javadocs and ABC the create{}controller.Directory
 public class Directory {
 
   public static LinkedList<String> createHomeDirectory(){
