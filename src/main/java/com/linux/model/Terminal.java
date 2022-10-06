@@ -39,7 +39,6 @@ public class Terminal {
    *
    */
   public Terminal(){
-    setUserDetails();
     setCurrentDirectory(homeDirectory);
   }
 
@@ -47,6 +46,7 @@ public class Terminal {
    * Updates the state of this instance by applying the specific user inputted command until {exit} is entered
    */
   public void startTerminal(){
+    setUserDetails();
     System.out.println(StringLiterals.START_NOTE); // TODO: 10/6/2022 Changes worth merging.
     DateTimeGroup.datePrompt();
     Scanner sc = new Scanner(System.in);
