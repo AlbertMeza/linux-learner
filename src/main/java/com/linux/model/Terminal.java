@@ -92,13 +92,13 @@ public class Terminal {
           Commands.TOUCH.execute();
           break;
         case "task1":
-          System.out.println(Tasks.TASK_ONE.taskDescription());
+          System.out.println(Tasks.TASK_ONE.task());
           break;
         case "task2":
-          System.out.println(Tasks.TASK_TWO.taskDescription());
+          System.out.println(Tasks.TASK_TWO.task());
           break;
         case "task3":
-          System.out.println(Tasks.TASK_THREE.taskDescription());
+          System.out.println(Tasks.TASK_THREE.task());
           break;
         default:
           System.out.println(StringLiterals.INVALID_COMMAND);

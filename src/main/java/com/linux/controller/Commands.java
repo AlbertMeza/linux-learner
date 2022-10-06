@@ -25,7 +25,7 @@ public enum Commands {
 
     @Override
     public void execute() {
-      System.out.println(StringLiterals.BLANK_SCREEN);
+      System.out.println(StringLiterals.CLEAR);
     }
   },
   EXIT("exit") {
@@ -53,12 +53,12 @@ public enum Commands {
   LIST_DIRECTORIES("ls") {
     @Override
     public String description() {
-      return literals.LS_DESCRIPTION;
+      return StringLiterals.LS_DESCRIPTION;
     }
 
     @Override
     public void execute() {
-      System.out.println(literals.DIRECTORY_CONTENTS);
+      System.out.println(StringLiterals.DIRECTORY_CONTENTS);
     }
   },
   PRINT_WORKING_DIRECTORY("pwd") {

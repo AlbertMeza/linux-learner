@@ -1,10 +1,5 @@
 package com.linux.view;
 
-import com.linux.model.Terminal;
-
-
-
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 //TODO javadocs

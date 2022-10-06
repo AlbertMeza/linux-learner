@@ -11,32 +11,17 @@ public enum Tasks {
     public String tutorial() {
       return StringLiterals.TASK_ONE_TUTORIAL;
     }
-
-    @Override
-    public String taskDescription() {
-      return StringLiterals.TASK_ONE;
-    }
   },
   TASK_TWO(StringLiterals.TASK_TWO) {
     @Override
     public String tutorial() {
       return StringLiterals.TASK_TWO_TUTORIAL;
     }
-
-    @Override
-    public String taskDescription() {
-      return StringLiterals.TASK_TWO;
-    }
   },
   TASK_THREE(StringLiterals.TASK_THREE){
     @Override
     public String tutorial() {
       return StringLiterals.TASK_THREE_TUTORIAL;
-    }
-
-    @Override
-    public String taskDescription() {
-      return StringLiterals.TASK_THREE;
     }
   };
 
@@ -52,5 +37,4 @@ public enum Tasks {
 
   public abstract String tutorial();
 
-  public abstract String taskDescription();
 }
