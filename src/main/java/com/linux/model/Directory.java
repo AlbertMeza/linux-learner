@@ -26,7 +26,8 @@ public class Directory {
     downloadDirectory = createDownloadsDirectory();
 
   }
-//getters
+
+  //getters
   public List<String> getHomeDirectory() {
     return homeDirectory;
   }
@@ -59,7 +60,7 @@ public class Directory {
     return downloadDirectory;
   }
 
-  private List<String> createHomeDirectory(){
+  private List<String> createHomeDirectory() {
     return Arrays.asList(
         "Pictures",
         "Desktop",
@@ -71,7 +72,7 @@ public class Directory {
     );
   }
 
-  public List<String> createDesktopDirectory(){
+  private List<String> createDesktopDirectory() {
     return Arrays.asList(
         "IDEs",
         "Jackbox Party Pack",
@@ -79,7 +80,7 @@ public class Directory {
     );
   }
 
-  public List<String> createLibraryDirectory(){
+  private List<String> createLibraryDirectory() {
     return Arrays.asList(
         "Head First Java",
         "Java: A Beginner's Guide",
@@ -91,7 +92,7 @@ public class Directory {
     );
   }
 
-  public List<String> createMoviesDirectory(){
+  private List<String> createMoviesDirectory() {
     return Arrays.asList(
         "The Dark Knight",
         "Titanic",
@@ -113,7 +114,6 @@ public class Directory {
   }
 
 
-
   private List<String> createPublicDirectory() {
     return Arrays.asList(
         "Public speaking event",
@@ -124,34 +124,33 @@ public class Directory {
   }
 
 
-
-  private List<String> createPictureDirectory(){
+  private List<String> createPictureDirectory() {
     return Arrays.asList(
         "Cats",
         "LinkedIn.JPEG",
-        "Screenshots"     );
+        "Screenshots");
   }
 
 
-
-  private List<String> createDownloadsDirectory(){
+  private List<String> createDownloadsDirectory() {
     return Arrays.asList(
         "League of Legends",
         "Spotify");
   }
 
 
-  public static String printDirectory(List<String> list){ //keep as list and not linked list
+  public static String printDirectory(List<String> list) { //keep as list and not linked list
     StringBuilder directoryList = new StringBuilder(list.get(0) + "\n");
-    for(int i = 1; i < list.size(); i++){
+    for (int i = 1; i < list.size(); i++) {
       directoryList.append(list.get(i)).append("\n");
     }
     return directoryList.toString();
   }
 
 
-  public List<String> changeDirectory(String directory){ //TODO look into switch short hand (desktop) => createDesktopDirectory(), it's something like this
-    switch(directory) {
+  public List<String> changeDirectory(
+      String directory) { //TODO look into switch short hand (desktop) => createDesktopDirectory(), it's something like this
+    switch (directory) {
       case "Desktop":
         return createDesktopDirectory();
       case "Pictures":

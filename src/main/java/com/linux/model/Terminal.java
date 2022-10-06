@@ -1,6 +1,7 @@
 package com.linux.model;
 
 import com.linux.controller.Commands;
+import com.linux.controller.Tasks;
 import com.linux.view.DateTimeGroup;
 import com.linux.view.StringLiterals;
 
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *  Encapsulates the current state of a terminal simulation of Linux Learner
+ * Encapsulates the current state of a terminal simulation of Linux Learner
  */
 public class Terminal {
 
@@ -18,7 +19,6 @@ public class Terminal {
   /**
    * Allows us to use all StringLiterals from the StringLiteral class
    */
-  private static final StringLiterals StringLiterals = new StringLiterals();
   /**
    * Default home directory is set to a standard home directory mimic
    */
@@ -34,23 +34,23 @@ public class Terminal {
   private String pwdString = StringLiterals.PWD;
 
   /**
-   * Initializes this instance with the specified configuration parameters. Once initialized,
-   * the configuration of userName and computerName does not change.
-   *
+   * Initializes this instance with the specified configuration parameters. Once initialized, the
+   * configuration of userName and computerName does not change.
    */
-  public Terminal(){
+  public Terminal() {
     setUserDetails();
     setCurrentDirectory(homeDirectory);
   }
 
   /**
-   * Updates the state of this instance by applying the specific user inputted command until {exit} is entered
+   * Updates the state of this instance by applying the specific user inputted command until {exit}
+   * is entered
    */
-  public void startTerminal(){
+  public void startTerminal() {
     System.out.println(StringLiterals.START_NOTE); // TODO: 10/6/2022 Changes worth merging.
     DateTimeGroup.datePrompt();
     Scanner sc = new Scanner(System.in);
-    while(!command.equals(Commands.EXIT.command())){
+    while (!command.equals(Commands.EXIT.command())) {
       System.out.print(getUserDetails() + StringLiterals.ACCESS_LEVEL);
       setCommand(sc.nextLine()); //talking point
       commandAction(getCommand());
@@ -62,7 +62,8 @@ public class Terminal {
    *
    * @param command User inputted command to execute on the terminal
    */
-  public void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop //TODO put the switch statement in ABC order
+  public void commandAction(
+      String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop //TODO put the switch statement in ABC order
     if (command.contains(" ")) { //multi commands
       String[] splitCommand = command.split("\\s");
       String commandOne = splitCommand[0];
@@ -101,14 +102,14 @@ public class Terminal {
         case "touch":
           Commands.TOUCH.execute();
           break;
-        case "task1": // TODO: 10/6/2022 Changes worth merging.
-          System.out.println(StringLiterals.TASK_ONE);
+        case "task1":
+          Tasks.TASK_ONE.execute();
           break;
-        case "task2": // TODO: 10/6/2022 Changes worth merging.
-          System.out.println(StringLiterals.TASK_TWO);
+        case "task2":
+          Tasks.TASK_TWO.execute();
           break;
-        case "task3": // TODO: 10/6/2022 Changes worth merging.
-          System.out.println(StringLiterals.TASK_THREE);
+        case "task3":
+          Tasks.TASK_THREE.execute();
           break;
         default:
           System.out.println(StringLiterals.INVALID_COMMAND);
@@ -150,38 +151,34 @@ public class Terminal {
   }
 
   /**
-   * Attempts to update the directory with the file
-   * Error message prints out if file already exists
+   * Attempts to update the directory with the file Error message prints out if file already exists
    *
    * @param file User inputted file to create on the terminal
    */
-  public void addToDirectory(String file){
-    if(currentDirectory.contains(file)){
-      System.out.printf(StringLiterals.FILE_ERROR, file); //TODO change to string literal, also look up unix terminal error
-    }
-    else {
+  public void addToDirectory(String file) {
+    if (currentDirectory.contains(file)) {
+      System.out.printf(StringLiterals.FILE_ERROR,
+          file); //TODO change to string literal, also look up unix terminal error
+    } else {
       currentDirectory.add(file);
     }
   }
 
   /**
-   *
-   *
    * @param dir User inputted directory to change present working directory
    */
-  public void changeDirectory(String dir){
-    if (dir.equals("~")){
+  public void changeDirectory(String dir) {
+    if (dir.equals("~")) {
       setCurrentDirectory(homeDirectory);
       setPwdString(homePWD());
-    }
-    else if(getCurrentDirectory().contains(dir)){
+    } else if (getCurrentDirectory().contains(dir)) {
       //cd
-      switch(dir) {
+      switch (dir) {
         case "Desktop": //TODO encapsulate these and look at them to see if you guys want changes into any of these
           setCurrentDirectory(Directory.changeDirectory(dir));
           break;
         case "Pictures":
-          setCurrentDirectory(Directory.pictureDirectory());
+          setCurrentDirectory(Directory.createPictureDirectory());
           break;
         case "Public":
           setCurrentDirectory(Directory.publicDirectory());
@@ -202,14 +199,13 @@ public class Terminal {
           break;
       }
       //change pwd
-      setPwdString(homePWD()+dir+"/");
-    }
-    else {
+      setPwdString(homePWD() + dir + "/");
+    } else {
       System.out.println(StringLiterals.INVALID_CD + dir);
     }
   }
 
-  public String homePWD(){
+  public String homePWD() {
     return StringLiterals.PWD + getUserName() + "/";
   }
 
@@ -242,6 +238,7 @@ public class Terminal {
   private String getComputerName() {
     return computerName;
   }
+
   public void setComputerName(String computerName) {
     this.computerName = computerName;
   }
@@ -253,14 +250,15 @@ public class Terminal {
   public void setPwdString(String pwdString) {
     this.pwdString = pwdString;
   }
+
   public String getUserDetails() {
-    return getUserName()+"@"+getComputerName();
+    return getUserName() + "@" + getComputerName();
   }
 
   private void setUserDetails() { //this acts as the setter for both userName and computerName
     System.out.println(StringLiterals.WELCOME);
     System.out.println();
-    Scanner sc= new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
     System.out.println(StringLiterals.USER_PROMPT);
     String userName = sc.next();
     System.out.println(StringLiterals.COMPUTER_PROMPT);
