@@ -61,13 +61,16 @@ public class StringLiterals {
   public static final String TASK_ONE_TUTORIAL = ("To find the Movies Directory it is best to know where you are first.\npwd will tell you where you are.\n "
       + "Now you need to change from the current directory to Movies.\n"
       + "{cd movies} translates to Change Directory: movies. "
-      + "You made it! While you're here, try {ls} to see the movies available.");
+      + "You made it! While you're here, try {ls} to see the movies available.\nGood job! use {cd ~} to return home.");
 
-  public static final String TASK_TWO_TUTORIAL =("To find the Library Directory it is best to know where you are first.\npwd will tell you where you are.\n"
+  public static final String TASK_TWO_TUTORIAL =("If you did the first task with us, use {clear} to start fresh!\nTo find the Library Directory it is best to know where you are first.\npwd will tell you where you are.\n"
       + "Now you need to change from the current directory to Library. The task was to add a new book to the library.\n"
       + "use the {ls} command to see what books we have there now. You can't recreate a file with the same name, so make sure you pick a book not already listed"
-      + "\n");
+      + "\n{touch 'yourBookNameHere' to create your book in the Library Directory. Now {ls} to verify it is there."
+      + "\nGood job! use {cd ~} to return home.");
 
-  public static final String TASK_THREE_TUTORIAL = (" ");
+  public static final String TASK_THREE_TUTORIAL = ("If you did the first task with us, use {clear} to start fresh!\n From the home Directory, use command {ls} to see what other directories are listed."
+      + "\nFrom there you can enter a different directoy using {cd} followed by the name of the directory you wish to go to. Now you are free to explore! {ls} to see whats in the selected directory, {touch} to add to it, and then return to the home directory."
+      + "\n{cd ~} will bring you home. {pwd} to verify the current directory." );
 
 }
