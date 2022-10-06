@@ -2,6 +2,9 @@ package com.linux.model;
 
 import java.util.List;
 
+/**
+ * Class to hold Directories being used in the "Linux Shell". Each directory is a linked array list so users may add
+ */
 //TODO javadocs and ABC the create{}controller.Directory
 public class Directory {
 
@@ -143,6 +146,7 @@ public class Directory {
     }
     return changeTo;
   }
+  //getters
   public List<String> getHomeDirectory() {
     return homeDirectory;
   }

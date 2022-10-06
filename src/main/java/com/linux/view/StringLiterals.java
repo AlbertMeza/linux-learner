@@ -1,6 +1,8 @@
 package com.linux.view;
 
-//TODO Javadocs
+/**
+ * A class to hold all of our CONSTANT statements
+ */
 public class StringLiterals {
 
   //Terminal
@@ -45,7 +47,7 @@ public class StringLiterals {
   public static final String PWD_DESCRIPTION = ("Print Working Directory (pwd): Print the full filename of the current working directory");
 
   public static final String TOUCH_DESCRIPTION = ("Touch (touch): Update the access and modification times of each file to the current time \nA file argument that does not exist is created empty");
-  // TODO: 10/6/2022 Changes worth merging.
+
   //Invalid Messages
   public static final String FILE_ERROR = ("This directory already has a file named %s\n");
 

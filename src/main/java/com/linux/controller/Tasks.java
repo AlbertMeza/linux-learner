@@ -2,6 +2,9 @@ package com.linux.controller;
 
 import com.linux.view.StringLiterals;
 
+/**
+ * Enum Tasks is used to describe tasks1-3 to the user and then provide tutorials for each task using two abstract methods.
+ */
 public enum Tasks {
   TASK_ONE(StringLiterals.TASK_ONE){
     @Override
@@ -47,7 +50,7 @@ public enum Tasks {
     return task;
   }
 
-  public abstract String tutorial();  //help task1 -> TASK_ONE.tutorial() -> returns a string of how to complete the ta
+  public abstract String tutorial();
 
   public abstract String taskDescription();
 }
