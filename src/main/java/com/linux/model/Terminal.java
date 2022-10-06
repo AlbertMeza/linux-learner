@@ -17,17 +17,8 @@ public class Terminal {
   private final List<String> homeDirectory = directory.getHomeDirectory(); //the home directory never changes from \Users\[username]
   private List<String> currentDirectory; //used to track the current directory
   /**
-   * Allows us to use all StringLiteralss from the StringLiteral class
-   */
-  private static final StringLiterals StringLiteralss = new StringLiterals();
-  /**
-   * Default home directory is set to a standard home directory mimic
-   */
-  //private static final List<String> homeDirectory = Directory.homeDirectory();
-  /**
    * Used to track the present working directory
    */
-  //private List<String> currentDirectory;
   private String command = "";
   private String userName = "";
   private String computerName = "";
