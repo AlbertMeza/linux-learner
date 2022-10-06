@@ -109,7 +109,7 @@ public class Directory {
         "THE KEYBOARD IS YOUR FRIEND",
         "Why the mouse is not your friend",
         "Top 10 reasons I hate Xfinity",
-        "Tips and Tricks(Have you read it yet?)"     );
+        "Tips and Tricks(Have you read it yet?)");
   }
 
 
@@ -120,7 +120,7 @@ public class Directory {
         "Java: coffee not code",
         "From Cradle to Gradle: Teaching babies to code",
         "Reminder to give Giovanni, Albert, And Anthony a high five",
-        "Proposal for Coraline: Dead Threads"     );
+        "Proposal for Coraline: Dead Threads");
   }
 
 
@@ -137,11 +137,11 @@ public class Directory {
   private List<String> createDownloadsDirectory(){
     return Arrays.asList(
         "League of Legends",
-        "Spotify"     );
+        "Spotify");
   }
 
 
-  public static String printDirectory(LinkedList<String> list){
+  public static String printDirectory(List<String> list){ //keep as list and not linked list
     StringBuilder directoryList = new StringBuilder(list.get(0) + "\n");
     for(int i = 1; i < list.size(); i++){
       directoryList.append(list.get(i)).append("\n");
