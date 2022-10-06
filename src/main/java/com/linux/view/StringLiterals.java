@@ -5,20 +5,19 @@ public class StringLiterals {
 
   //Terminal
   public static final String ACCESS_LEVEL = (" ~ % ");
+
   public static final String BLANK_SCREEN = ("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
   public static final String COMPUTER_PROMPT = ("Please enter your Computer Name: ");
 
-  public static final String FILE_ERROR = ("This directory already has a file named %s\n");
-
-  public static final String HELP_INVALID = ("help for that command is not available. You may use cd, clear, ls, pwd, touch, or exit");
-
-  public static final String INVALID_CD = ("cd: no such file or directory: ");
-
-  public static final String INVALID_COMMAND = ("Incorrect Command");
-
-  public static final String TOUCH_INVALID = ("You need to specify what you want to use with the touch command");
-
+  public static final String START_NOTE = ("Try a completing our tasks, find the tasks by entering {task1} {task2} {task3}.\nIf unknown where to start enter {help} for clues");
+  // TODO: 10/6/2022  Changes worth merging.
+  public static final String TASK_ONE = ("Try to find our movie watchlist in the Movies Directory");
+  // TODO: 10/6/2022  Changes worth merging.
+  public static final String TASK_TWO = ("We have several books in our Library Directory, can you add one of your favorites?");
+  // TODO: 10/6/2022  Changes worth merging.
+  public static final String TASK_THREE = ("Navigate to any directory of your choice. Can you get back home? Can you verify");
+  // TODO: 10/6/2022  Changes worth merging.
   public static final String USER_PROMPT = ("Please enter your User Name: ");
 
   public static final String WELCOME = ("Hello! Welcome to Linux Learner. If you are new to the Linux Command line then this is the place for you.\nIf you are not a Linux beginner, then let's test your knowledge with some tasks!");
@@ -46,7 +45,17 @@ public class StringLiterals {
   public static final String PWD_DESCRIPTION = ("Print Working Directory (pwd): Print the full filename of the current working directory");
 
   public static final String TOUCH_DESCRIPTION = ("Update the access and modification times of each FILE to the current time \n A FILE argument that does not exist is created empty\n");
+  // TODO: 10/6/2022 Changes worth merging.
+  //Invalid Messages
+  public static final String FILE_ERROR = ("This directory already has a file named %s\n");
 
+  public static final String HELP_INVALID = ("help for that command is not available. You may use cd, clear, ls, pwd, touch, or exit");
+
+  public static final String INVALID_CD = ("cd: no such file or directory: ");
+
+  public static final String INVALID_COMMAND = ("Incorrect Command");
+
+  public static final String TOUCH_INVALID = ("You need to specify what you want to use with the touch command");
 
 
 }

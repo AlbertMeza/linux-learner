@@ -47,7 +47,7 @@ public class Terminal {
    * Updates the state of this instance by applying the specific user inputted command until {exit} is entered
    */
   public void startTerminal(){
-    System.out.println("if unknown where to start try {help} then enter"); //TODO customize this
+    System.out.println(StringLiterals.START_NOTE); // TODO: 10/6/2022 Changes worth merging.
     DateTimeGroup.datePrompt();
     Scanner sc = new Scanner(System.in);
     while(!command.equals(Commands.EXIT.command())){
@@ -82,7 +82,7 @@ public class Terminal {
           System.out.println(StringLiterals.INVALID_COMMAND);
       }
     } else { //solo command
-      switch (command) { //TODO discuss a {help me} command
+      switch (command) {
         case "clear":
           Commands.CLEAR.execute();
           break;
@@ -100,6 +100,15 @@ public class Terminal {
           break;
         case "touch":
           Commands.TOUCH.execute();
+          break;
+        case "task1": // TODO: 10/6/2022 Changes worth merging.
+          System.out.println(StringLiterals.TASK_ONE);
+          break;
+        case "task2": // TODO: 10/6/2022 Changes worth merging.
+          System.out.println(StringLiterals.TASK_TWO);
+          break;
+        case "task3": // TODO: 10/6/2022 Changes worth merging.
+          System.out.println(StringLiterals.TASK_THREE);
           break;
         default:
           System.out.println(StringLiterals.INVALID_COMMAND);
@@ -196,7 +205,7 @@ public class Terminal {
       setPwdString(homePWD()+dir+"/");
     }
     else {
-      System.out.println(StringLiterals.INVALID_CD + dir); //TODO also look up unix terminal error for matching
+      System.out.println(StringLiterals.INVALID_CD + dir);
     }
   }
 
