@@ -4,7 +4,7 @@ import com.linux.view.StringLiterals;
 
 //TODO JAVA DOCS
 public enum Commands {
-  CHANGE_DIRECTORY("cd") { //must have an internal state these commands execute against (Virtual file tracker made in a different class)
+  CHANGE_DIRECTORY("cd") {
     @Override
     public String description() {
       return literals.CD_DESCRIPTION;
@@ -82,12 +82,12 @@ public enum Commands {
     }
   };
 
-
+  // TODO: 10/6/2022 delete line below and ctrl r all literals to StringLiterals
   private static final StringLiterals literals = new StringLiterals();
   private final String command;
 
 
-  Commands(String command){
+  Commands(String command) {
     this.command = command;
   }
 

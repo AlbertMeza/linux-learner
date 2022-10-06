@@ -10,14 +10,14 @@ public class StringLiterals {
 
   public static final String COMPUTER_PROMPT = ("Please enter your Computer Name: ");
 
-  public static final String START_NOTE = ("Try a completing our tasks, find the tasks by entering {task1} {task2} {task3}.\nIf unknown where to start enter {help} for clues");
-  // TODO: 10/6/2022  Changes worth merging.
+  public static final String START_NOTE = ("Try completing our tasks, find the tasks by entering {task1} {task2} {task3}.\nIf unknown where to start enter {help} for clues");
+
   public static final String TASK_ONE = ("Try to find our movie watchlist in the Movies Directory");
-  // TODO: 10/6/2022  Changes worth merging.
+
   public static final String TASK_TWO = ("We have several books in our Library Directory, can you add one of your favorites?");
-  // TODO: 10/6/2022  Changes worth merging.
-  public static final String TASK_THREE = ("Navigate to any directory of your choice. Can you get back home? Can you verify");
-  // TODO: 10/6/2022  Changes worth merging.
+
+  public static final String TASK_THREE = ("Navigate to any directory of your choice. Can you get back home? Can you verify your current working directory.");
+
   public static final String USER_PROMPT = ("Please enter your User Name: ");
 
   public static final String WELCOME = ("Hello! Welcome to Linux Learner. If you are new to the Linux Command line then this is the place for you.\nIf you are not a Linux beginner, then let's test your knowledge with some tasks!");
@@ -25,7 +25,7 @@ public class StringLiterals {
   //Command Executables
   public static final String DIRECTORY_CONTENTS = ("Pictures Desktop Public Documents Downloads Library Movies");
 
-  public static final String EXIT =("Saving session...\n...copying shared history..\n...saving history...truncating history files...\n...completed.\n\n[Process completed]");
+  public static final String EXIT = ("Saving session...\n...copying shared history..\n...saving history...truncating history files...\n...completed.\n\n[Process completed]");
 
   public static final String HELP = ("To use the help command, 'help' must be followed by: cd, clear, ls, pwd, touch, or exit");
 

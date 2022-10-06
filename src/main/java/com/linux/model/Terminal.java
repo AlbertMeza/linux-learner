@@ -17,6 +17,14 @@ public class Terminal {
   private final List<String> homeDirectory = directory.getHomeDirectory(); //the home directory never changes from \Users\[username]
   private List<String> currentDirectory; //used to track the current directory
   /**
+   * Allows us to use all StringLiteralss from the StringLiteral class
+   */
+  private static final StringLiterals StringLiteralss = new StringLiterals();
+  /**
+   * Default home directory is set to a standard home directory mimic
+   */
+  //private static final List<String> homeDirectory = Directory.homeDirectory();
+  /**
    * Used to track the present working directory
    */
   //private List<String> currentDirectory;
@@ -27,9 +35,8 @@ public class Terminal {
   private String pwdString = StringLiterals.PWD;
 
   /**
-   * Initializes this instance with the specified configuration parameters. Once initialized,
-   * the configuration of userName and computerName does not change.
-   *
+   * Initializes this instance with the specified configuration parameters. Once initialized, the
+   * configuration of userName and computerName does not change.
    */
   public Terminal(){
     setUserDetails();
@@ -94,14 +101,14 @@ public class Terminal {
         case "touch":
           Commands.TOUCH.execute();
           break;
-        case "task1": // TODO: 10/6/2022 Changes worth merging.
-          System.out.println(StringLiterals.TASK_ONE);
+        case "task1":
+          Tasks.TASK_ONE.execute();
           break;
-        case "task2": // TODO: 10/6/2022 Changes worth merging.
-          System.out.println(StringLiterals.TASK_TWO);
+        case "task2":
+          Tasks.TASK_TWO.execute();
           break;
-        case "task3": // TODO: 10/6/2022 Changes worth merging.
-          System.out.println(StringLiterals.TASK_THREE);
+        case "task3":
+          Tasks.TASK_THREE.execute();
           break;
         default:
           System.out.println(StringLiterals.INVALID_COMMAND);
@@ -148,12 +155,12 @@ public class Terminal {
    *
    * @param file User inputted file to create on the terminal
    */
-  public void addToDirectory(String file){
-    if(currentDirectory.contains(file)){
-      System.out.printf(StringLiterals.FILE_ERROR, file);
-    }
-    else {
-
+  public void addToDirectory(String file) {
+    if (currentDirectory.contains(file)) {
+      System.out.printf(StringLiterals.FILE_ERROR,
+          file); //TODO change to string literal, also look up unix terminal error
+    } else {
+      currentDirectory.add(file);
     }
   }
 
@@ -211,6 +218,7 @@ public class Terminal {
   private String getComputerName() {
     return computerName;
   }
+
   public void setComputerName(String computerName) {
     this.computerName = computerName;
   }
@@ -222,14 +230,15 @@ public class Terminal {
   public void setPwdString(String pwdString) {
     this.pwdString = pwdString;
   }
+
   public String getUserDetails() {
-    return getUserName()+"@"+getComputerName();
+    return getUserName() + "@" + getComputerName();
   }
 
   private void setUserDetails() { //this acts as the setter for both userName and computerName
     System.out.println(StringLiterals.WELCOME);
     System.out.println();
-    Scanner sc= new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
     System.out.println(StringLiterals.USER_PROMPT);
     String userName = sc.next();
     System.out.println(StringLiterals.COMPUTER_PROMPT);
