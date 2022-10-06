@@ -1,6 +1,8 @@
 package com.linux.view;
 
-//TODO Javadocs
+/**
+ * A class to hold all of our CONSTANT statements
+ */
 public class StringLiterals {
 
   //Terminal
@@ -45,7 +47,7 @@ public class StringLiterals {
   public static final String PWD_DESCRIPTION = ("Print Working Directory (pwd): Print the full filename of the current working directory");
 
   public static final String TOUCH_DESCRIPTION = ("Touch (touch): Update the access and modification times of each file to the current time \nA file argument that does not exist is created empty");
-  // TODO: 10/6/2022 Changes worth merging.
+
   //Invalid Messages
   public static final String FILE_ERROR = ("This directory already has a file named %s\n");
 
@@ -57,5 +59,20 @@ public class StringLiterals {
 
   public static final String TOUCH_INVALID = ("You need to specify what you want to use with the touch command");
 
+  //tasks descriptions
+  public static final String TASK_ONE_TUTORIAL = ("To find the Movies Directory it is best to know the current directory.\n{pwd} Will print the current working directory.\n"
+      + "Now you need to change from the current directory to Movies.\n"
+      + "{cd Movies} translates to Change Directory: Movies."
+      + "\nYou made it! While you're here, try {ls} to see the movies available.\nGood job! use {cd ~} to return home.");
+
+  public static final String TASK_TWO_TUTORIAL =("To find the Library Directory it is best to know the current directory.\n{pwd} Will print the current working directory.\n"
+      + "Now you need to change from the current directory to Library, {cd Library}.\n"
+      + "Use the {ls} command to see what books are currently listed.\nYou can't recreate a file with the same name, so make sure you pick a book not already listed."
+      + "\n{touch 'yourBookNameHere'} to create your book in the Library Directory. Now {ls} to verify it is there."
+      + "\nGood job! use {cd ~} to return home.");
+
+  public static final String TASK_THREE_TUTORIAL = ("From the home Directory, use command {ls} to see what other directories are listed."
+      + "\nNow you can enter a different directory using {cd 'nameOfDirectory'}.\nNow you are free to explore! {ls} to see whats in the selected directory, and then return to the home directory."
+      + "\n{cd ~} will bring you home. {pwd} to verify the current directory is home user." );
 
 }
