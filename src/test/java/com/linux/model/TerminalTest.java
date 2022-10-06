@@ -2,10 +2,19 @@ package com.linux.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.linux.TerminalMain;
+import com.linux.view.DateTimeGroup;
+import com.linux.view.StringLiterals;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import com.linux.view.StringLiterals;
 import java.util.List;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -59,6 +68,7 @@ class TerminalTest {
 
   @ParameterizedTest
   @MethodSource({"commandDescriptionTestCases", "commandDescriptionInvalidTestCases"})
+  @MethodSource("commandDescriptionTestCases")
   void commandDescription(String command, String expected) {
     Terminal terminal = new Terminal();
     terminal.commandDescription(command);
@@ -80,9 +90,20 @@ class TerminalTest {
     Directory dir = new Directory();
     terminal.changeDirectory("Desktop");
     assertEquals(terminal.getCurrentDirectory(), dir.getDesktopDirectory());
+    //String input = terminal.commandDescription(command);
+    assertEquals(expected, command);
   }
 
   @Test
+  void dateTimeGroupTest() {
+    Terminal terminal = new Terminal();
+    //String time = DateTimeGroup.datePrompt();
+
+    Date date = new Date();
+    SimpleDateFormat prompt = new SimpleDateFormat("EEE MMM  d HH:mm:ss");
+    String today = prompt.format(date);
+
+    assertEquals(today, prompt);
   void changeDirectoryHomeTest(){
     Terminal terminal = new Terminal();
     Directory dir = new Directory();
