@@ -16,7 +16,7 @@ public class StringLiterals {
   // TODO: 10/6/2022  Changes worth merging.
   public static final String TASK_TWO = ("We have several books in our Library Directory, can you add one of your favorites?");
   // TODO: 10/6/2022  Changes worth merging.
-  public static final String TASK_THREE = ("Navigate to any directory of your choice. Can you get back home? Can you verify");
+  public static final String TASK_THREE = ("Navigate to any directory of your choice. Can you get back home? Can you verify your current working directory.");
   // TODO: 10/6/2022  Changes worth merging.
   public static final String USER_PROMPT = ("Please enter your User Name: ");
 
@@ -45,6 +45,7 @@ public class StringLiterals {
   public static final String PWD_DESCRIPTION = ("Print Working Directory (pwd): Print the full filename of the current working directory");
 
   public static final String TOUCH_DESCRIPTION = ("Update the access and modification times of each FILE to the current time \n A FILE argument that does not exist is created empty\n");
+
   // TODO: 10/6/2022 Changes worth merging.
   //Invalid Messages
   public static final String FILE_ERROR = ("This directory already has a file named %s\n");
