@@ -57,5 +57,17 @@ public class StringLiterals {
 
   public static final String TOUCH_INVALID = ("You need to specify what you want to use with the touch command");
 
+  //tasks descriptions
+  public static final String TASK_ONE_TUTORIAL = ("To find the Movies Directory it is best to know where you are first.\npwd will tell you where you are.\n "
+      + "Now you need to change from the current directory to Movies.\n"
+      + "{cd movies} translates to Change Directory: movies. "
+      + "You made it! While you're here, try {ls} to see the movies available.");
+
+  public static final String TASK_TWO_TUTORIAL =("To find the Library Directory it is best to know where you are first.\npwd will tell you where you are.\n"
+      + "Now you need to change from the current directory to Library. The task was to add a new book to the library.\n"
+      + "use the {ls} command to see what books we have there now. You can't recreate a file with the same name, so make sure you pick a book not already listed"
+      + "\n");
+
+  public static final String TASK_THREE_TUTORIAL = (" ");
 
 }
