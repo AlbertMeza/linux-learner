@@ -114,7 +114,12 @@ public class Directory {
   public String printDirectory(List<String> list){
     StringBuilder directoryList = new StringBuilder(list.get(0) + "\n");
     for(int i = 1; i < list.size(); i++){
-      directoryList.append(list.get(i)).append("\n");
+      if(i == list.size()-1) {
+        directoryList.append(list.get(i));
+      }
+      else {
+        directoryList.append(list.get(i)).append("\n");
+      }
     }
     return directoryList.toString();
   }
