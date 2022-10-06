@@ -3,6 +3,7 @@ package com.linux.model;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.stream.Stream;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -23,10 +24,19 @@ class TerminalTest {
   }
 
 
+//  @BeforeAll
+//  void start() {
+//    Terminal terminal = new Terminal();
+//  }
+
   @ParameterizedTest
   @MethodSource("commandActionTestCases")
-  void commandAction(String command, String expected) {
+  void commandDescription(String command, String expected) {
     Terminal terminal = new Terminal();
+
+//    String start1 = "sdfsadf";
+//    String start2 = "sdfsadf";
+//    terminal.startTerminal(start1, start2);
     String input = terminal.commandDescription(command);
     assertEquals(expected, input);
   }
