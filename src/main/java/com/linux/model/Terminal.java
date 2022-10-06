@@ -1,10 +1,10 @@
 package com.linux.model;
 
 import com.linux.controller.Commands;
+import com.linux.controller.Tasks;
 import com.linux.view.DateTimeGroup;
 import com.linux.view.StringLiterals;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -93,13 +93,13 @@ public class Terminal {
           Commands.TOUCH.execute();
           break;
         case "task1":
-          Tasks.TASK_ONE.execute();
+          Tasks.TASK_ONE.task();
           break;
         case "task2":
-          Tasks.TASK_TWO.execute();
+          Tasks.TASK_TWO.task();
           break;
         case "task3":
-          Tasks.TASK_THREE.execute();
+          Tasks.TASK_THREE.task();
           break;
         default:
           System.out.println(StringLiterals.INVALID_COMMAND);
@@ -134,6 +134,15 @@ public class Terminal {
         break;
       case "touch":
         System.out.println(Commands.TOUCH.description());
+        break;
+      case "task1":
+        Tasks.TASK_TWO.tutorial();
+        break;
+      case "task2":
+        Tasks.TASK_TWO.tutorial();
+        break;
+      case "task3":
+        Tasks.TASK_TWO.tutorial();
         break;
       default:
         System.out.println(StringLiterals.HELP_INVALID);
