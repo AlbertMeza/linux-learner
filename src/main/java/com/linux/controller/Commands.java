@@ -23,7 +23,7 @@ public enum Commands {
 
     @Override
     public void execute() {
-      System.out.println(literals.BLANK_SCREEN);
+      System.out.println(literals.CLEAR);
     }
   },
   EXIT("exit") {

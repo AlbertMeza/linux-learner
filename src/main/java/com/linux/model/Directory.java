@@ -1,5 +1,8 @@
 package com.linux.model;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 //TODO javadocs and ABC the create{}controller.Directory
@@ -26,7 +29,7 @@ public class Directory {
   }
 
   private List<String> homeDirectory(){
-    return List.of(
+    return new LinkedList<>(Arrays.asList(
         "Pictures",
         "Desktop",
         "Public",
@@ -34,19 +37,19 @@ public class Directory {
         "Downloads",
         "Library",
         "Movies"
-    );
+    ));
   }
 
   private List<String> desktopDirectory(){
-    return List.of(
+    return new LinkedList<>(Arrays.asList(
       "IDEs",
       "Jackbox Party Pack",
       "Homework"
-    );
+    ));
   }
 
   private List<String> libraryDirectory(){
-    return List.of(
+    return Arrays.asList(
       "Head First Java",
       "Java: A Beginner's Guide",
       "Java: The Complete Reference",
@@ -58,7 +61,7 @@ public class Directory {
   }
 
   private List<String> moviesDirectory(){
-    return List.of(
+    return Arrays.asList(
       "Spinal Tap",
       "Avatar",
       "Avengers: Endgame",
@@ -70,7 +73,7 @@ public class Directory {
 
 
   private List<String> documentDirectory() {
-    return List.of(
+    return Arrays.asList(
     "Computers aren’t magic!",
     "Head First Java",
     "THE KEYBOARD IS YOUR FRIEND",
@@ -81,7 +84,7 @@ public class Directory {
   }
 
   private List<String> publicDirectory() {
-    return List.of(
+    return Arrays.asList(
     "Public speaking event",
     "Java: coffee not code",
     "From Cradle to Gradle: Teaching babies to code",
@@ -91,7 +94,7 @@ public class Directory {
   }
 
   private List<String> pictureDirectory(){
-    return List.of(
+    return Arrays.asList(
     "Cats",
     "LinkedIn.JPEG",
     "Screenshots"
@@ -99,7 +102,7 @@ public class Directory {
   }
 
   private List<String> downloadDirectory(){
-    return List.of(
+    return Arrays.asList(
     "League of Legends",
     "Spotify"
     );

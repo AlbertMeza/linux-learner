@@ -6,7 +6,7 @@ public class StringLiterals {
   //Terminal
   public static final String ACCESS_LEVEL = (" ~ % ");
 
-  public static final String BLANK_SCREEN = ("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+  public static final String CLEAR = ("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 
   public static final String COMPUTER_PROMPT = ("Please enter your Computer Name: ");
 

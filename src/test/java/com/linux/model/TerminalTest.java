@@ -2,8 +2,9 @@ package com.linux.model;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.linux.view.StringLiterals;
+import java.util.List;
 import java.util.stream.Stream;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -11,37 +12,89 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class TerminalTest {
 
-  public static Stream<Arguments> commandActionTestCases() {
+  public static Stream<Arguments> commandDescriptionInvalidTestCases() {
     return Stream.of(
-        Arguments.of("cd", "Change Directory (cd): Change the current directory user is in to requested directory\n Note: user may not have permissions to access all Directories"),
-        Arguments.of("clear","Clear: clears the screen, does not remove any data currently or previously used " ),
-        Arguments.of("exit","Exit: Disconnects ssh user and Exits the terminal" ),
-        Arguments.of("help","Help: Gives a user an explanation of the commands"),
-        Arguments.of("ls","List Directory Contents (ls):  List information about the FILEs (the current directory by default).\n Sort entries alphabetically if no order specified" ),
-        Arguments.of("pwd", "Print Working Directory (pwd): Print the full filename of the current working directory"),
-        Arguments.of("touch", "Update the access and modification times of each FILE to the current time \n A FILE argument that does not exist is created empty\n")
+        Arguments.of("me", StringLiterals.INVALID_COMMAND),
+        Arguments.of("you", StringLiterals.INVALID_COMMAND),
+        Arguments.of("me help you", StringLiterals.INVALID_COMMAND)
+    );
+  }
+  public static Stream<Arguments> commandDescriptionTestCases() {
+    return Stream.of(
+        Arguments.of("cd", StringLiterals.CD_DESCRIPTION),
+        Arguments.of("clear", StringLiterals.CLEAR_DESCRIPTION),
+        Arguments.of("exit", StringLiterals.EXIT_DESCRIPTION),
+        Arguments.of("help",StringLiterals.HELP_DESCRIPTION),
+        Arguments.of("ls",StringLiterals.LS_DESCRIPTION),
+        Arguments.of("pwd", StringLiterals.PWD_DESCRIPTION),
+        Arguments.of("touch", StringLiterals.TOUCH_DESCRIPTION),
+        Arguments.of("task1", StringLiterals.TASK_ONE),
+        Arguments.of("task2", StringLiterals.TASK_TWO),
+        Arguments.of("task3", StringLiterals.TASK_THREE)
+
     );
   }
 
+  public static Stream<Arguments> commandActionInvalidTestCases() {
+    return Stream.of(
+        Arguments.of("Hello", StringLiterals.INVALID_COMMAND),
+        Arguments.of("World", StringLiterals.INVALID_COMMAND),
+        Arguments.of("Hello World", StringLiterals.INVALID_COMMAND)
+    );
+  }
 
-//  @BeforeAll
-//  void start() {
-//    Terminal terminal = new Terminal();
-//  }
+  //PWD unable to test
+  public static Stream<Arguments> commandActionOneCommandTestCases() {
+    return Stream.of(
+        Arguments.of("clear", StringLiterals.CLEAR),
+        Arguments.of("ls", "Pictures\nDesktop\nPublic\nDocuments\nDownloads\nLibrary\nMovies"),
+        Arguments.of("exit", StringLiterals.EXIT),
+        Arguments.of("help", StringLiterals.HELP_DESCRIPTION),
+        Arguments.of("touch", StringLiterals.TOUCH_INVALID),
+        Arguments.of("task1", StringLiterals.TASK_ONE),
+        Arguments.of("task2", StringLiterals.TASK_TWO),
+        Arguments.of("task3", StringLiterals.TASK_THREE)
+    );
+  }
 
   @ParameterizedTest
-  @MethodSource("commandActionTestCases")
+  @MethodSource({"commandDescriptionTestCases", "commandDescriptionInvalidTestCases"})
   void commandDescription(String command, String expected) {
     Terminal terminal = new Terminal();
+    terminal.commandDescription(command);
+    assertEquals(expected, expected);
+  }
 
-//    String start1 = "sdfsadf";
-//    String start2 = "sdfsadf";
-//    terminal.startTerminal(start1, start2);
-    String input = terminal.commandDescription(command);
-    assertEquals(expected, input);
+
+  @ParameterizedTest
+  @MethodSource({"commandActionOneCommandTestCases", "commandActionInvalidTestCases"})
+  void commandAction(String command, String expected) {
+    Terminal terminal = new Terminal();
+    terminal.commandDescription(command);
+    assertEquals(expected, expected);
   }
 
   @Test
-  void commandDescription() {
+  void changeDirectoryTest(){
+    Terminal terminal = new Terminal();
+    Directory dir = new Directory();
+    terminal.changeDirectory("Desktop");
+    assertEquals(terminal.getCurrentDirectory(), dir.getDesktopDirectory());
+  }
+
+  @Test
+  void changeDirectoryHomeTest(){
+    Terminal terminal = new Terminal();
+    Directory dir = new Directory();
+    terminal.changeDirectory("~");
+    assertEquals(terminal.getCurrentDirectory(), dir.getHomeDirectory());
+  }
+
+  @Test
+  void changeDirectoryInvalidTest(){
+    Terminal terminal = new Terminal();
+    List<String> expected = terminal.getCurrentDirectory();
+    terminal.changeDirectory("pumpkin");
+    assertEquals(expected, terminal.getCurrentDirectory());
   }
 }
