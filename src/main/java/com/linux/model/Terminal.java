@@ -4,6 +4,7 @@ import com.linux.controller.Commands;
 import com.linux.view.DateTimeGroup;
 import com.linux.view.StringLiterals;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,14 +16,6 @@ public class Terminal {
   private final Directory directory = new Directory();
   private final List<String> homeDirectory = directory.getHomeDirectory(); //the home directory never changes from \Users\[username]
   private List<String> currentDirectory; //used to track the current directory
-  /**
-   * Allows us to use all StringLiteralss from the StringLiteral class
-   */
-  private static final StringLiterals StringLiteralss = new StringLiterals();
-  /**
-   * Default home directory is set to a standard home directory mimic
-   */
-  //private static final List<String> homeDirectory = Directory.homeDirectory();
   /**
    * Used to track the present working directory
    */
@@ -52,7 +45,7 @@ public class Terminal {
     Scanner sc = new Scanner(System.in);
     while(!command.equals(Commands.EXIT.command())){
       System.out.print(getUserDetails() + StringLiterals.ACCESS_LEVEL);
-      setCommand(sc.nextLine()); //talking point
+      setCommand(sc.nextLine());
       commandAction(getCommand());
     }
   }
@@ -87,7 +80,7 @@ public class Terminal {
           Commands.CLEAR.execute();
           break;
         case "ls":
-          System.out.println(Directory.printDirectory(currentDirectory));
+          System.out.println(directory.printDirectory(getCurrentDirectory()));
           break;
         case "pwd":
           System.out.println(getPwdString());
@@ -157,10 +150,10 @@ public class Terminal {
    */
   public void addToDirectory(String file){
     if(currentDirectory.contains(file)){
-      System.out.printf(StringLiterals.FILE_ERROR, file); //TODO change to string literal, also look up unix terminal error
+      System.out.printf(StringLiterals.FILE_ERROR, file);
     }
     else {
-      currentDirectory.add(file);
+
     }
   }
 
@@ -176,31 +169,7 @@ public class Terminal {
     }
     else if(getCurrentDirectory().contains(dir)){
       //cd
-      switch(dir) {
-        case "Desktop": //TODO encapsulate these and look at them to see if you guys want changes into any of these
-          setCurrentDirectory(Directory.changeDirectory(dir));
-          break;
-        case "Pictures":
-          setCurrentDirectory(Directory.pictureDirectory());
-          break;
-        case "Public":
-          setCurrentDirectory(Directory.publicDirectory());
-          break;
-        case "Documents":
-          setCurrentDirectory(Directory.documentDirectory());
-          break;
-        case "Downloads":
-          setCurrentDirectory(Directory.downloadDirectory());
-          break;
-        case "Library":
-          setCurrentDirectory(Directory.libraryDirectory());
-          break;
-        case "Movies":
-          setCurrentDirectory(Directory.moviesDirectory());
-          break;
-        default:
-          break;
-      }
+      setCurrentDirectory(directory.switchDirectory(dir));
       //change pwd
       setPwdString(homePWD()+dir+"/");
     }

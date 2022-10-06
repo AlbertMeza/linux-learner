@@ -15,8 +15,8 @@ public class Directory {
   private static List<String> pictureDirectory;
   private static List<String> downloadDirectory;
 
-  public Directory() {//ctor
-    homeDirectory =homeDirectory();
+  public Directory() {
+    homeDirectory = homeDirectory();
     desktopDirectory = desktopDirectory();
     libraryDirectory = libraryDirectory();
     moviesDirectory = moviesDirectory();
@@ -26,40 +26,7 @@ public class Directory {
     downloadDirectory = downloadDirectory();
   }
 
-
-  public static List<String> getHomeDirectory() {
-    return homeDirectory;
-  }
-
-  public static List<String> getDesktopDirectory() {
-    return desktopDirectory;
-  }
-
-  public static List<String> getLibraryDirectory() {
-    return libraryDirectory;
-  }
-
-  public static List<String> getMoviesDirectory() {
-    return moviesDirectory;
-  }
-
-  public static List<String> getDocumentDirectory() {
-    return documentDirectory;
-  }
-
-  public static List<String> getPublicDirectory() {
-    return publicDirectory;
-  }
-
-  public static List<String> getPictureDirectory() {
-    return pictureDirectory;
-  }
-
-  public static List<String> getDownloadDirectory() {
-    return downloadDirectory;
-  }
-
-  static List<String> homeDirectory(){
+  private List<String> homeDirectory(){
     return Arrays.asList(
         "Pictures",
         "Desktop",
@@ -71,7 +38,7 @@ public class Directory {
     );
   }
 
-  static List<String> desktopDirectory(){
+  private List<String> desktopDirectory(){
     return Arrays.asList(
       "IDEs",
       "Jackbox Party Pack",
@@ -79,7 +46,7 @@ public class Directory {
     );
   }
 
-  static List<String> libraryDirectory(){
+  private List<String> libraryDirectory(){
     return Arrays.asList(
       "Head First Java",
       "Java: A Beginner's Guide",
@@ -91,7 +58,7 @@ public class Directory {
     );
   }
 
-  static List<String> moviesDirectory(){
+  private List<String> moviesDirectory(){
     return Arrays.asList(
       "Spinal Tap",
       "Avatar",
@@ -103,7 +70,7 @@ public class Directory {
   }
 
 
-  static List<String> documentDirectory() {
+  private List<String> documentDirectory() {
     return Arrays.asList(
     "Computers aren’t magic!",
     "Head First Java",
@@ -114,7 +81,7 @@ public class Directory {
     );
   }
 
-  static List<String> publicDirectory() {
+  private List<String> publicDirectory() {
     return Arrays.asList(
     "Public speaking event",
     "Java: coffee not code",
@@ -124,7 +91,7 @@ public class Directory {
     );
   }
 
-  static List<String> pictureDirectory(){
+  private List<String> pictureDirectory(){
     return Arrays.asList(
     "Cats",
     "LinkedIn.JPEG",
@@ -132,14 +99,14 @@ public class Directory {
     );
   }
 
-  static List<String> downloadDirectory(){
+  private List<String> downloadDirectory(){
     return Arrays.asList(
     "League of Legends",
     "Spotify"
     );
   }
 
-  public static String printDirectory(List<String> list){
+  public String printDirectory(List<String> list){
     StringBuilder directoryList = new StringBuilder(list.get(0) + "\n");
     for(int i = 1; i < list.size(); i++){
       directoryList.append(list.get(i)).append("\n");
@@ -148,24 +115,65 @@ public class Directory {
   }
 
 
-  static List<String> changeDirectory(String directory){ //TODO look into switch short hand (desktop) => createDesktopDirectory(), it's something like this
+  public List<String> switchDirectory(String directory){ //TODO look into switch short hand (desktop) => createDesktopDirectory(), it's something like this
+    List<String> changeTo;
     switch(directory) {
       case "Desktop":
-        return getDesktopDirectory();
+        changeTo = getDesktopDirectory();
+        break;
       case "Pictures":
-        return getPictureDirectory();
+        changeTo = getPictureDirectory();
+        break;
       case "Public":
-        return getPublicDirectory();
+        changeTo = getPublicDirectory();
+        break;
       case "Documents":
-        return getDocumentDirectory();
+        changeTo = getDocumentDirectory();
+        break;
       case "Downloads":
-        return getDownloadDirectory();
+        changeTo = getDownloadDirectory();
+        break;
       case "Library":
-        return getLibraryDirectory();
+        changeTo = getLibraryDirectory();
+        break;
       case "Movies":
-        return getMoviesDirectory();
+        changeTo = getMoviesDirectory();
+        break;
+      default:
+        changeTo = getHomeDirectory();
     }
-    return getHomeDirectory();
+    return changeTo;
+  }
+  public List<String> getHomeDirectory() {
+    return homeDirectory;
+  }
+
+  public List<String> getDesktopDirectory() {
+    return desktopDirectory;
+  }
+
+  public List<String> getLibraryDirectory() {
+    return libraryDirectory;
+  }
+
+  public List<String> getMoviesDirectory() {
+    return moviesDirectory;
+  }
+
+  public List<String> getDocumentDirectory() {
+    return documentDirectory;
+  }
+
+  public List<String> getPublicDirectory() {
+    return publicDirectory;
+  }
+
+  public List<String> getPictureDirectory() {
+    return pictureDirectory;
+  }
+
+  public List<String> getDownloadDirectory() {
+    return downloadDirectory;
   }
 }
 
