@@ -1,6 +1,6 @@
 package com.linux.controller;
 
-import com.linux.model.StringLiterals;
+import com.linux.view.StringLiterals;
 
 //TODO JAVA DOCS
 public enum Commands {
@@ -12,7 +12,7 @@ public enum Commands {
 
     @Override
     public void execute() {
-// TODO: 10/5/2022  
+// TODO: 10/5/2022
     }
   },
   CLEAR("clear") {
