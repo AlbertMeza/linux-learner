@@ -12,7 +12,7 @@ public enum Commands {
 
     @Override
     public void execute() {
-      //empty on purpose
+// TODO: 10/5/2022
     }
   },
   CLEAR("clear") {
@@ -85,7 +85,6 @@ public enum Commands {
 
   private static final StringLiterals literals = new StringLiterals();
   private final String command;
-
 
 
   Commands(String command){

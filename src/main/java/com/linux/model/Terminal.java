@@ -3,30 +3,51 @@ package com.linux.model;
 import com.linux.controller.Commands;
 import com.linux.view.DateTimeGroup;
 import com.linux.view.StringLiterals;
-import java.util.LinkedList;
+
 import java.util.List;
 import java.util.Scanner;
 
-
-//TODO need a javadocs description
+/**
+ *  Encapsulates the current state of a terminal simulation of Linux Learner
+ */
 public class Terminal {
 
   private final Directory directory = new Directory();
   private final List<String> homeDirectory = directory.getHomeDirectory(); //the home directory never changes from \Users\[username]
-  private LinkedList<String> currentDirectory; //used to track the current directory
+  private List<String> currentDirectory; //used to track the current directory
+  /**
+   * Allows us to use all StringLiterals from the StringLiteral class
+   */
+  private static final StringLiterals StringLiterals = new StringLiterals();
+  /**
+   * Default home directory is set to a standard home directory mimic
+   */
+  //private static final List<String> homeDirectory = Directory.homeDirectory();
+  /**
+   * Used to track the present working directory
+   */
+  //private List<String> currentDirectory;
   private String command = "";
   private String userName = "";
   private String computerName = "";
 
   private String pwdString = StringLiterals.PWD;
 
+  /**
+   * Initializes this instance with the specified configuration parameters. Once initialized,
+   * the configuration of userName and computerName does not change.
+   *
+   */
   public Terminal(){
     setUserDetails();
     setCurrentDirectory(homeDirectory);
   }
 
+  /**
+   * Updates the state of this instance by applying the specific user inputted command until {exit} is entered
+   */
   public void startTerminal(){
-    System.out.println("if unknown where to start try {help} then enter"); //TODO customize this
+    System.out.println(StringLiterals.START_NOTE); // TODO: 10/6/2022 Changes worth merging.
     DateTimeGroup.datePrompt();
     Scanner sc = new Scanner(System.in);
     while(!command.equals(Commands.EXIT.command())){
@@ -37,8 +58,9 @@ public class Terminal {
   }
 
   /**
+   * Processes the user command
    *
-   * @param command
+   * @param command User inputted command to execute on the terminal
    */
   public void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop //TODO put the switch statement in ABC order
     if (command.contains(" ")) { //multi commands
@@ -60,7 +82,7 @@ public class Terminal {
           System.out.println(StringLiterals.INVALID_COMMAND);
       }
     } else { //solo command
-      switch (command) { //TODO discuss a {help me} command
+      switch (command) {
         case "clear":
           Commands.CLEAR.execute();
           break;
@@ -79,13 +101,27 @@ public class Terminal {
         case "touch":
           Commands.TOUCH.execute();
           break;
+        case "task1": // TODO: 10/6/2022 Changes worth merging.
+          System.out.println(StringLiterals.TASK_ONE);
+          break;
+        case "task2": // TODO: 10/6/2022 Changes worth merging.
+          System.out.println(StringLiterals.TASK_TWO);
+          break;
+        case "task3": // TODO: 10/6/2022 Changes worth merging.
+          System.out.println(StringLiterals.TASK_THREE);
+          break;
         default:
           System.out.println(StringLiterals.INVALID_COMMAND);
       }
     }
   }
 
-  public void commandDescription(String command) { //TODO abc order
+  /**
+   * "help {command}" inputted by the user will print out a layman's description of the command
+   *
+   * @param command User inputted command to execute on the terminal
+   */
+  public void commandDescription(String command) {
     switch (command) {
       case "cd":
         System.out.println(Commands.CHANGE_DIRECTORY.description());
@@ -113,6 +149,12 @@ public class Terminal {
     }
   }
 
+  /**
+   * Attempts to update the directory with the file
+   * Error message prints out if file already exists
+   *
+   * @param file User inputted file to create on the terminal
+   */
   public void addToDirectory(String file){
     if(currentDirectory.contains(file)){
       System.out.printf(StringLiterals.FILE_ERROR, file); //TODO change to string literal, also look up unix terminal error
@@ -122,6 +164,11 @@ public class Terminal {
     }
   }
 
+  /**
+   *
+   *
+   * @param dir User inputted directory to change present working directory
+   */
   public void changeDirectory(String dir){
     if (dir.equals("~")){
       setCurrentDirectory(homeDirectory);
@@ -134,22 +181,22 @@ public class Terminal {
           setCurrentDirectory(Directory.changeDirectory(dir));
           break;
         case "Pictures":
-          currentDirectory = Directory.createPictureDirectory();
+          setCurrentDirectory(Directory.pictureDirectory());
           break;
         case "Public":
-          currentDirectory = Directory.createPublicDirectory();
+          setCurrentDirectory(Directory.publicDirectory());
           break;
         case "Documents":
-          currentDirectory = Directory.createDocumentsDirectory();
+          setCurrentDirectory(Directory.documentDirectory());
           break;
         case "Downloads":
-          currentDirectory = Directory.createDownloadsDirectory();
+          setCurrentDirectory(Directory.downloadDirectory());
           break;
         case "Library":
-          currentDirectory = Directory.createLibraryDirectory();
+          setCurrentDirectory(Directory.libraryDirectory());
           break;
         case "Movies":
-          currentDirectory = Directory.createMoviesDirectory();
+          setCurrentDirectory(Directory.moviesDirectory());
           break;
         default:
           break;
@@ -158,7 +205,7 @@ public class Terminal {
       setPwdString(homePWD()+dir+"/");
     }
     else {
-      System.out.println(StringLiterals.INVALID_CD + dir); //TODO also look up unix terminal error for matching
+      System.out.println(StringLiterals.INVALID_CD + dir);
     }
   }
 
@@ -167,12 +214,12 @@ public class Terminal {
   }
 
 
-  public LinkedList<String> getCurrentDirectory() {
+  public List<String> getCurrentDirectory() {
     return this.currentDirectory;
   }
 
 
-  private void setCurrentDirectory(LinkedList<String> currentDirectory) {
+  private void setCurrentDirectory(List<String> currentDirectory) {
     this.currentDirectory = currentDirectory;
   }
 

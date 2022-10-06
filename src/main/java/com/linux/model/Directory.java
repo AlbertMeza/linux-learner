@@ -1,7 +1,6 @@
 package com.linux.model;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 //TODO javadocs and ABC the create{}controller.Directory
@@ -16,7 +15,7 @@ public class Directory {
   private final List<String> pictureDirectory;
   private final List<String> downloadDirectory;
 
-  public Directory() {//ctor 
+  public Directory() {//ctor
     homeDirectory = createHomeDirectory();
     desktopDirectory = createDesktopDirectory();
     libraryDirectory = createLibraryDirectory();
