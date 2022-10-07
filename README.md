@@ -1,5 +1,25 @@
-# Team Project
+# Linux Learner
 
-This is a template used as a starter project/repository for the team project executed in week 6.
+The project is to create a Linux terminal. 
 
-Replace this content with a summary description of the actual project repository.
+The user sees a replicated Linux shell.
+The user will type commands and receive similar responses you would get on a real terminal.
+
+We programed the following Linux commands: 
+
+cd (Change Directory)
+
+clear (Clear)
+
+exit ( Exit from shell)
+
+help (Used to understand commands)
+
+ls (List)
+
+pwd (Print Working Directory) 
+
+touch (Used to create new files if non exist).
+
+To guide the user, we incorporated three tasks (task1, task2, task3) to complete and an option to get directions for completing each task.
+
