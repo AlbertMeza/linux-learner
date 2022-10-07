@@ -1,14 +1,12 @@
 package com.linux.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Class to hold Directories being used in the "Linux Shell". Each directory is a linked array list so users may add
+ * Holds all Directories being used in the Terminal. Each directory is implemented as a linked array list
  */
-//TODO javadocs and ABC the create{}controller.Directory
 public class Directory {
 
   private static List<String> homeDirectory;
@@ -111,7 +109,12 @@ public class Directory {
     );
   }
 
-  public String printDirectory(List<String> list){
+  /**
+   * Used to print all contents with the command {ls}
+   * @param list A directory
+   * @return A string representation of content within the directory
+   */
+  String printDirectory(List<String> list){
     StringBuilder directoryList = new StringBuilder(list.get(0) + "\n");
     for(int i = 1; i < list.size(); i++){
       if(i == list.size()-1) {
@@ -124,8 +127,13 @@ public class Directory {
     return directoryList.toString();
   }
 
-
-  public List<String> switchDirectory(String directory){ //TODO look into switch short hand (desktop) => createDesktopDirectory(), it's something like this
+  /**
+   * Used to change directory with the command {cd [directory name]},
+   * option to use {cd ~} to return to home directory
+   * @param directory the second command after {cd}
+   * @return a list to store as the present working directory
+   */
+  List<String> switchDirectory(String directory){
     List<String> changeTo;
     switch(directory) {
       case "Desktop":
@@ -154,36 +162,35 @@ public class Directory {
     }
     return changeTo;
   }
-  //getters
-  public List<String> getHomeDirectory() {
+  List<String> getHomeDirectory() {
     return homeDirectory;
   }
 
-  public List<String> getDesktopDirectory() {
+  List<String> getDesktopDirectory() {
     return desktopDirectory;
   }
 
-  public List<String> getLibraryDirectory() {
+  List<String> getLibraryDirectory() {
     return libraryDirectory;
   }
 
-  public List<String> getMoviesDirectory() {
+  List<String> getMoviesDirectory() {
     return moviesDirectory;
   }
 
-  public List<String> getDocumentDirectory() {
+  List<String> getDocumentDirectory() {
     return documentDirectory;
   }
 
-  public List<String> getPublicDirectory() {
+  List<String> getPublicDirectory() {
     return publicDirectory;
   }
 
-  public List<String> getPictureDirectory() {
+  List<String> getPictureDirectory() {
     return pictureDirectory;
   }
 
-  public List<String> getDownloadDirectory() {
+   List<String> getDownloadDirectory() {
     return downloadDirectory;
   }
 }

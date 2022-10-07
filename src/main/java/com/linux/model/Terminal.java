@@ -13,11 +13,15 @@ import java.util.Scanner;
 public class Terminal {
 
   private final Directory directory = new Directory();
-  private final List<String> homeDirectory = directory.getHomeDirectory(); //the home directory never changes from \Users\[username]
-  private List<String> currentDirectory; //used to track the current directory
+  /**
+   * Sets the homeDirectory as \Users\[username]\
+   */
+  private final List<String> homeDirectory = directory.getHomeDirectory();
   /**
    * Used to track the present working directory
    */
+  private List<String> currentDirectory;
+
   private String command = "";
   private String userName = "";
   private String computerName = "";
@@ -37,8 +41,8 @@ public class Terminal {
    */
   public void startTerminal(){
     setUserDetails();
-    System.out.println(StringLiterals.START_NOTE); // TODO: 10/6/2022 Changes worth merging.
-    DateTimeGroup.datePrompt();
+    System.out.println(StringLiterals.START_NOTE);
+    System.out.println(DateTimeGroup.datePrompt());
     Scanner sc = new Scanner(System.in);
     while(!command.equals(Commands.EXIT.command())){
       System.out.print(getUserDetails() + StringLiterals.ACCESS_LEVEL);
@@ -52,7 +56,7 @@ public class Terminal {
    *
    * @param command User inputted command to execute on the terminal
    */
-  public void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop //TODO put the switch statement in ABC order
+  private void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop
     if (command.contains(" ")) { //multi commands
       String[] splitCommand = command.split("\\s");
       String commandOne = splitCommand[0];
@@ -60,7 +64,7 @@ public class Terminal {
 
       switch (commandOne) {
         case "touch":
-          addToDirectory(commandTwo); //maybe talk rules here, add logic
+          addToDirectory(commandTwo);
           break;
         case "help":
           commandDescription(commandTwo);
@@ -111,7 +115,7 @@ public class Terminal {
    *
    * @param command User inputted command to execute on the terminal
    */
-  public void commandDescription(String command) {
+  void commandDescription(String command) {
     switch (command) {
       case "cd":
         System.out.println(Commands.CHANGE_DIRECTORY.description());
@@ -154,21 +158,21 @@ public class Terminal {
    *
    * @param file User inputted file to create on the terminal
    */
-  public void addToDirectory(String file) {
+  private void addToDirectory(String file) {
     if (currentDirectory.contains(file)) {
       System.out.printf(StringLiterals.FILE_ERROR,
-          file); //TODO change to string literal, also look up unix terminal error
+          file);
     } else {
       currentDirectory.add(file);
     }
   }
 
   /**
-   *
+   * Alters the present working directory
    *
    * @param dir User inputted directory to change present working directory
    */
-  public void changeDirectory(String dir){
+  void changeDirectory(String dir){
     if (dir.equals("~")){
       setCurrentDirectory(homeDirectory);
       setPwdString(homePWD());
@@ -184,57 +188,10 @@ public class Terminal {
     }
   }
 
-  public String homePWD(){
-    return StringLiterals.PWD + getUserName() + "/";
-  }
-
-
-  public List<String> getCurrentDirectory() {
-    return this.currentDirectory;
-  }
-
-
-  private void setCurrentDirectory(List<String> currentDirectory) {
-    this.currentDirectory = currentDirectory;
-  }
-
-  public String getCommand() {
-    return command;
-  }
-
-  public void setCommand(String command) {
-    this.command = command;
-  }
-
-  private String getUserName() {
-    return userName;
-  }
-
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
-
-  private String getComputerName() {
-    return computerName;
-  }
-
-  public void setComputerName(String computerName) {
-    this.computerName = computerName;
-  }
-
-  public String getPwdString() {
-    return pwdString;
-  }
-
-  public void setPwdString(String pwdString) {
-    this.pwdString = pwdString;
-  }
-
-  public String getUserDetails() {
-    return getUserName() + "@" + getComputerName();
-  }
-
-  private void setUserDetails() { //this acts as the setter for both userName and computerName
+  /**
+   * Used to set the userName and computerName of the session
+   */
+  private void setUserDetails() {
     System.out.println(StringLiterals.WELCOME);
     System.out.println();
     Scanner sc = new Scanner(System.in);
@@ -248,5 +205,52 @@ public class Terminal {
     System.out.println(StringLiterals.CLEAR);
   }
 
+  private String homePWD(){
+    return StringLiterals.PWD + getUserName() + "/";
+  }
+
+  List<String> getCurrentDirectory() {
+    return this.currentDirectory;
+  }
+
+  private void setCurrentDirectory(List<String> currentDirectory) {
+    this.currentDirectory = currentDirectory;
+  }
+
+  private String getCommand() {
+    return command;
+  }
+
+  private void setCommand(String command) {
+    this.command = command;
+  }
+
+  private String getUserName() {
+    return userName;
+  }
+
+  private void setUserName(String userName) {
+    this.userName = userName;
+  }
+
+  private String getComputerName() {
+    return computerName;
+  }
+
+  private void setComputerName(String computerName) {
+    this.computerName = computerName;
+  }
+
+  private String getPwdString() {
+    return pwdString;
+  }
+
+  private void setPwdString(String pwdString) {
+    this.pwdString = pwdString;
+  }
+
+  private String getUserDetails() {
+    return getUserName() + "@" + getComputerName();
+  }
 
 }

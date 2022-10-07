@@ -35,6 +35,10 @@ public enum Tasks {
     return task;
   }
 
+  /**
+   * Used to assist the user on the command {help task1}
+   * @return A string representation of the task tutorial
+   */
   public abstract String tutorial();
 
 }

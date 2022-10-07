@@ -3,7 +3,7 @@ package com.linux.controller;
 import com.linux.view.StringLiterals;
 
 /**
- * Enum class with two abstract methods for each command to call the execution and print the description of each.
+ * Implements all commands with two abstract methods for  the execution and description of each
  */
 public enum Commands {
   CHANGE_DIRECTORY("cd") {
@@ -14,7 +14,6 @@ public enum Commands {
 
     @Override
     public void execute() {
-// TODO: 10/5/2022
     }
   },
   CLEAR("clear") {
@@ -108,7 +107,13 @@ public enum Commands {
     return command;
   }
 
+  /**
+   * @return A description when called on by {help} of the linux command
+   */
   public abstract String description();
 
+  /**
+   * Conducts execution of the linux command
+   */
   public abstract void execute();
 }

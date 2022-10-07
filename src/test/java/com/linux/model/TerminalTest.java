@@ -16,14 +16,14 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class TerminalTest {
 
-  public static Stream<Arguments> commandDescriptionInvalidTestCases() {
+  private static Stream<Arguments> commandDescriptionInvalidTestCases() {
     return Stream.of(
         Arguments.of("me", StringLiterals.INVALID_COMMAND),
         Arguments.of("you", StringLiterals.INVALID_COMMAND),
         Arguments.of("me help you", StringLiterals.INVALID_COMMAND)
     );
   }
-  public static Stream<Arguments> commandDescriptionTestCases() {
+  private static Stream<Arguments> commandDescriptionTestCases() {
     return Stream.of(
         Arguments.of("cd", StringLiterals.CD_DESCRIPTION),
         Arguments.of("clear", StringLiterals.CLEAR_DESCRIPTION),
@@ -39,7 +39,7 @@ class TerminalTest {
     );
   }
 
-  public static Stream<Arguments> commandActionInvalidTestCases() {
+  private static Stream<Arguments> commandActionInvalidTestCases() {
     return Stream.of(
         Arguments.of("Hello", StringLiterals.INVALID_COMMAND),
         Arguments.of("World", StringLiterals.INVALID_COMMAND),
@@ -47,8 +47,7 @@ class TerminalTest {
     );
   }
 
-  //PWD unable to test
-  public static Stream<Arguments> commandActionOneCommandTestCases() {
+  private static Stream<Arguments> commandActionOneCommandTestCases() {
     return Stream.of(
         Arguments.of("clear", StringLiterals.CLEAR),
         Arguments.of("ls", "Pictures\nDesktop\nPublic\nDocuments\nDownloads\nLibrary\nMovies"),

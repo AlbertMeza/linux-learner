@@ -1,7 +1,7 @@
 package com.linux.view;
 
 /**
- * A class to hold all of our CONSTANT statements
+ * hold all the string representations statements
  */
 public class StringLiterals {
 
@@ -24,7 +24,7 @@ public class StringLiterals {
 
   public static final String WELCOME = ("Hello! Welcome to Linux Learner. If you are new to the Linux Command line then this is the place for you.\nIf you are not a Linux beginner, then let's test your knowledge with some tasks!");
 
-  //Command Executables
+  //Command executables
   public static final String DIRECTORY_CONTENTS = ("Pictures Desktop Public Documents Downloads Library Movies");
 
   public static final String EXIT = ("Saving session...\n...copying shared history..\n...saving history...truncating history files...\n...completed.\n\n[Process completed]");
@@ -33,7 +33,7 @@ public class StringLiterals {
 
   public static final String PWD = ("/Users/");
 
-  //Command Descriptions
+  //Command descriptions
   public static final String CD_DESCRIPTION = ("Change Directory (cd): Change the current directory user is in to requested directory\nNote: user may not have permissions to access all directories");
 
   public static final String CLEAR_DESCRIPTION = ("Clear (clear): clears the screen, does not remove any data currently or previously used");
@@ -48,7 +48,7 @@ public class StringLiterals {
 
   public static final String TOUCH_DESCRIPTION = ("Touch (touch): Update the access and modification times of each file to the current time \nA file argument that does not exist is created empty");
 
-  //Invalid Messages
+  //Invalid messages
   public static final String FILE_ERROR = ("This directory already has a file named %s\n");
 
   public static final String HELP_INVALID = ("help for that command is not available. You may use cd, clear, ls, pwd, touch, or exit");
@@ -59,7 +59,7 @@ public class StringLiterals {
 
   public static final String TOUCH_INVALID = ("You need to specify what you want to use with the touch command");
 
-  //tasks descriptions
+  //Task descriptions
   public static final String TASK_ONE_TUTORIAL = ("To find the Movies Directory it is best to know the current directory.\n{pwd} Will print the current working directory.\n"
       + "Now you need to change from the current directory to Movies.\n"
       + "{cd Movies} translates to Change Directory: Movies."
