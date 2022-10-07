@@ -1,25 +1,26 @@
 # Linux Learner
 
-The project is to create a Linux terminal. 
+The project that uses the console to implement a sandbox like Linux terminal. 
 
-The user sees a replicated Linux shell.
+The user sees a replicated Unix shell.
+
 The user will type commands and receive similar responses you would get on a real terminal.
 
-We programed the following Linux commands: 
+We programmed the following Linux commands: 
 
-cd (Change Directory)
+```cd``` (Change Directory)
 
-clear (Clear)
+```clear``` (Clear)
 
-exit ( Exit from shell)
+```exit``` (Exit from shell)
 
-help (Used to understand commands)
+```help``` (Used to understand commands)
 
-ls (List)
+```ls``` (List)
 
-pwd (Print Working Directory) 
+```pwd``` (Print Working Directory) 
 
-touch (Used to create new files if non exist).
+```touch``` (Used to create new files if non exist).
 
-To guide the user, we incorporated three tasks (task1, task2, task3) to complete and an option to get directions for completing each task.
+To guide the user, we incorporated three tasks (task1, task2, task3) to complete and an option to get directions for completing each task. 
 
