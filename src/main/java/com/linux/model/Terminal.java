@@ -57,25 +57,25 @@ public class Terminal {
    * @param command User inputted command to execute on the terminal
    */
   private void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop
-    if (command.contains(" ")) { //multi commands
+    if (command.contains(" ")) { //For multi string commands
       String[] splitCommand = command.split("\\s");
       String commandOne = splitCommand[0];
       String commandTwo = splitCommand[1];
 
       switch (commandOne) {
-        case "touch":
-          addToDirectory(commandTwo);
+        case "cd":
+          changeDirectory(commandTwo);
           break;
         case "help":
           commandDescription(commandTwo);
           break;
-        case "cd":
-          changeDirectory(commandTwo);
+        case "touch":
+          addToDirectory(commandTwo);
           break;
         default:
           System.out.println(StringLiterals.INVALID_COMMAND);
       }
-    } else { //solo command
+    } else { //For single string command
       switch (command) {
         case "clear":
           Commands.CLEAR.execute();

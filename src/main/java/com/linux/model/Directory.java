@@ -50,7 +50,7 @@ public class Directory {
   }
 
   private List<String> libraryDirectory(){
-    return Arrays.asList(
+    return new LinkedList<>(Arrays.asList(
       "Head First Java",
       "Java: A Beginner's Guide",
       "Java: The Complete Reference",
@@ -58,55 +58,55 @@ public class Directory {
       "Effective Java",
       "Design Patterns: Elements of Reusable Object-Oriented Software",
       "Head First Design Patterns "
-    );
+    ));
   }
 
   private List<String> moviesDirectory(){
-    return Arrays.asList(
+    return new LinkedList<>(Arrays.asList(
       "Spinal Tap",
       "Avatar",
       "Avengers: Endgame",
       "Star Wars: Revenge of the Sith",
       "The Dark Knight",
       "Titanic"
-    );
+    ));
   }
 
 
   private List<String> documentDirectory() {
-    return Arrays.asList(
+    return new LinkedList<>(Arrays.asList(
     "Computers aren’t magic!",
     "Head First Java",
     "THE KEYBOARD IS YOUR FRIEND",
     "Why the mouse is not your friend",
     "Top 10 reasons I hate Xfinity",
     "Tips and Tricks(Have you read it yet?)"
-    );
+    ));
   }
 
   private List<String> publicDirectory() {
-    return Arrays.asList(
+    return new LinkedList<>(Arrays.asList(
     "Public speaking event",
     "Java: coffee not code",
     "From Cradle to Gradle: Teaching babies to code",
     "Reminder to give Giovanni, Albert, And Anthony a high five",
     "Proposal for Coraline: Dead Threads"
-    );
+    ));
   }
 
   private List<String> pictureDirectory(){
-    return Arrays.asList(
+    return new LinkedList<>(Arrays.asList(
     "Cats",
     "LinkedIn.JPEG",
     "Screenshots"
-    );
+    ));
   }
 
   private List<String> downloadDirectory(){
-    return Arrays.asList(
+    return new LinkedList<>(Arrays.asList(
     "League of Legends",
     "Spotify"
-    );
+    ));
   }
 
   /**
