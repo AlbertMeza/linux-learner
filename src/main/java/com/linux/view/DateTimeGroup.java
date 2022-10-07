@@ -2,7 +2,10 @@ package com.linux.view;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-//TODO javadocs
+
+/**
+ * Class used to emulate the standard linux login time.
+ */
 public class DateTimeGroup {
 
   public static String datePrompt() {

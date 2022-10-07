@@ -22,45 +22,45 @@ public class StringLiterals {
 
   public static final String USER_PROMPT = ("Please enter your User Name: ");
 
-  public static final String WELCOME = ("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHello! Welcome to Linux Learner. If you are new to the Linux command line then this is the place for you.\nIf you are not a Linux beginner, then let's test your knowledge with some tasks!");
+  public static final String WELCOME = ("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHello! Welcome to Linux Learner. If you are new to the Linux command line then this is the place for you.\nIf you are not a Linux beginner, then jump straight into the tasks to test your knowledge!");
 
   //Command Executables
   public static final String DIRECTORY_CONTENTS = ("Pictures Desktop Public Documents Downloads Library Movies");
 
   public static final String EXIT = ("Saving session...\n...copying shared history..\n...saving history...truncating history files...\n...completed.\n\n[Process completed]");
 
-  public static final String HELP = ("To use the help command, {help} must be followed by: cd, clear, ls, pwd, touch, or exit");
+  public static final String HELP = ("To use the help command, {help} must be followed by: cd, clear, ls, pwd, touch, or exit.");
 
   public static final String PWD = ("/Users/");
 
   //Command Descriptions
-  public static final String CD_DESCRIPTION = ("Change Directory (cd): Change the current directory to new directory.\nNote: user may not have permissions to access all directories");
+  public static final String CD_DESCRIPTION = ("Change Directory (cd): Change the current directory to new directory.\nNote: user may not have permissions to access all directories.");
 
-  public static final String CLEAR_DESCRIPTION = ("Clear (clear): clears the screen, does not remove any data currently or previously used");
+  public static final String CLEAR_DESCRIPTION = ("Clear (clear): clears the screen, does not remove any data currently or previously used.");
 
-  public static final String EXIT_DESCRIPTION = ("Exit (exit): Disconnects ssh user and Exits the terminal");
+  public static final String EXIT_DESCRIPTION = ("Exit (exit): Disconnects ssh user and Exits the terminal.");
 
-  public static final String HELP_DESCRIPTION = ("Help (help): Gives a user an explanation of the commands");
+  public static final String HELP_DESCRIPTION = ("Help (help): Gives a user an explanation of the commands.");
 
-  public static final String LS_DESCRIPTION = ("List Directory Contents (ls):  List information about the files (the current directory by default).\nSort entries alphabetically if no order specified");
+  public static final String LS_DESCRIPTION = ("List Directory Contents (ls):  List information about the files (the current directory by default).\nSort entries alphabetically if no order specified.");
 
-  public static final String PWD_DESCRIPTION = ("Print Working Directory (pwd): Print the full filename of the current working directory");
+  public static final String PWD_DESCRIPTION = ("Print Working Directory (pwd): Print the full filename of the current working directory.");
 
-  public static final String TOUCH_DESCRIPTION = ("Touch (touch): Update the access and modification times of each file to the current time \nA file argument that does not exist is created empty");
+  public static final String TOUCH_DESCRIPTION = ("Touch (touch): Update the access and modification times of each file to the current time.\nA file argument that does not exist is created as an empty file.");
 
   //Invalid Messages
   public static final String FILE_ERROR = ("This directory already has a file named %s\n");
 
-  public static final String HELP_INVALID = ("help for that command is not available. You may use cd, clear, ls, pwd, touch, or exit");
+  public static final String HELP_INVALID = ("help for that command is not available. You may use cd, clear, ls, pwd, touch, or exit.");
 
   public static final String INVALID_CD = ("cd: no such file or directory: ");
 
   public static final String INVALID_COMMAND = ("Incorrect Command");
 
-  public static final String TOUCH_INVALID = ("You need to specify what you want to use with the touch command");
+  public static final String TOUCH_INVALID = ("You need to specify what you want to use with the touch command.");
 
   //tasks descriptions
-  public static final String TASK_ONE_TUTORIAL = (
+  public static final String TASK_ONE_TUTORIAL =(
         "Step 1. To find the Movies Directory it is best to know the current directory.\n"
       + "Step 2. Use {pwd} to print the current working directory.\n"
       + "Step 3. Now you need to change from the current directory to Movie Directory.\n"
@@ -78,7 +78,7 @@ public class StringLiterals {
       + "Step 7. Now use {ls} to verify it is there.\n"
       + "Good job! use {cd ~} to return home.");
 
-  public static final String TASK_THREE_TUTORIAL = (
+  public static final String TASK_THREE_TUTORIAL =(
         "Step 1. From the Home Directory, use {ls} to see the existing directories.\n"
       + "Step 2. To change directory use {cd 'nameOfDirectory'}.\n"
       + "Step 3. Now you are free to explore! Use {ls} to see whats in the selected directory.\n"

@@ -1,6 +1,5 @@
 package com.linux.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.List;
 /**
  * Class to hold Directories being used in the "Linux Shell". Each directory is a linked array list so users may add
  */
-//TODO javadocs and ABC the create{}controller.Directory
 public class Directory {
 
   private static List<String> homeDirectory;
@@ -125,7 +123,7 @@ public class Directory {
   }
 
 
-  public List<String> switchDirectory(String directory){ //TODO look into switch short hand (desktop) => createDesktopDirectory(), it's something like this
+  public List<String> switchDirectory(String directory){
     List<String> changeTo;
     switch(directory) {
       case "Desktop":

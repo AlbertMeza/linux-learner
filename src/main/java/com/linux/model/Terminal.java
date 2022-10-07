@@ -37,7 +37,7 @@ public class Terminal {
    */
   public void startTerminal(){
     setUserDetails();
-    System.out.println(StringLiterals.START_NOTE); // TODO: 10/6/2022 Changes worth merging.
+    System.out.println(StringLiterals.START_NOTE);
     DateTimeGroup.datePrompt();
     Scanner sc = new Scanner(System.in);
     while(!command.equals(Commands.EXIT.command())){
@@ -52,26 +52,26 @@ public class Terminal {
    *
    * @param command User inputted command to execute on the terminal
    */
-  public void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop //TODO put the switch statement in ABC order
-    if (command.contains(" ")) { //multi commands
+  public void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop
+    if (command.contains(" ")) { //For multi string commands
       String[] splitCommand = command.split("\\s");
       String commandOne = splitCommand[0];
       String commandTwo = splitCommand[1];
 
       switch (commandOne) {
-        case "touch":
-          addToDirectory(commandTwo); //maybe talk rules here, add logic
+        case "cd":
+          changeDirectory(commandTwo);
           break;
         case "help":
           commandDescription(commandTwo);
           break;
-        case "cd":
-          changeDirectory(commandTwo);
+        case "touch":
+          addToDirectory(commandTwo);
           break;
         default:
           System.out.println(StringLiterals.INVALID_COMMAND);
       }
-    } else { //solo command
+    } else { //For single string command
       switch (command) {
         case "clear":
           Commands.CLEAR.execute();
@@ -157,7 +157,7 @@ public class Terminal {
   public void addToDirectory(String file) {
     if (currentDirectory.contains(file)) {
       System.out.printf(StringLiterals.FILE_ERROR,
-          file); //TODO change to string literal, also look up unix terminal error
+          file);
     } else {
       currentDirectory.add(file);
     }
