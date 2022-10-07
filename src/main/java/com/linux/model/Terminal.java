@@ -1,71 +1,87 @@
 package com.linux.model;
 
 import com.linux.controller.Commands;
+import com.linux.controller.Tasks;
 import com.linux.view.DateTimeGroup;
 import com.linux.view.StringLiterals;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-
-//TODO need a javadocs description
+/**
+ *  Encapsulates the current state of a terminal simulation of Linux Learner
+ */
 public class Terminal {
 
   private final Directory directory = new Directory();
-  private final List<String> homeDirectory = directory.getHomeDirectory(); //the home directory never changes from \Users\[username]
-  private LinkedList<String> currentDirectory; //used to track the current directory
+  /**
+   * Sets the homeDirectory as \Users\[username]\
+   */
+  private final List<String> homeDirectory = directory.getHomeDirectory();
+  /**
+   * Used to track the present working directory
+   */
+  private List<String> currentDirectory;
+
   private String command = "";
   private String userName = "";
   private String computerName = "";
 
   private String pwdString = StringLiterals.PWD;
 
+  /**
+   * Initializes this instance with the specified configuration parameters. Once initialized, the
+   * configuration of userName and computerName does not change.
+   */
   public Terminal(){
-    setUserDetails();
     setCurrentDirectory(homeDirectory);
   }
 
+  /**
+   * Updates the state of this instance by applying the specific user inputted command until {exit} is entered
+   */
   public void startTerminal(){
-    System.out.println("if unknown where to start try {help} then enter"); //TODO customize this
-    DateTimeGroup.datePrompt();
+    setUserDetails();
+    System.out.println(StringLiterals.START_NOTE);
+    System.out.println(DateTimeGroup.datePrompt());
     Scanner sc = new Scanner(System.in);
     while(!command.equals(Commands.EXIT.command())){
       System.out.print(getUserDetails() + StringLiterals.ACCESS_LEVEL);
-      setCommand(sc.nextLine()); //talking point
+      setCommand(sc.nextLine());
       commandAction(getCommand());
     }
   }
 
   /**
+   * Processes the user command
    *
-   * @param command
+   * @param command User inputted command to execute on the terminal
    */
-  public void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop //TODO put the switch statement in ABC order
-    if (command.contains(" ")) { //multi commands
+  private void commandAction(String command) {  //cd Desktop -> splitCommand[0] = cd, splitCommand[1] = Desktop
+    if (command.contains(" ")) { //For multi string commands
       String[] splitCommand = command.split("\\s");
       String commandOne = splitCommand[0];
       String commandTwo = splitCommand[1];
 
       switch (commandOne) {
-        case "touch":
-          addToDirectory(commandTwo); //maybe talk rules here, add logic
+        case "cd":
+          changeDirectory(commandTwo);
           break;
         case "help":
           commandDescription(commandTwo);
           break;
-        case "cd":
-          changeDirectory(commandTwo);
+        case "touch":
+          addToDirectory(commandTwo);
           break;
         default:
           System.out.println(StringLiterals.INVALID_COMMAND);
       }
-    } else { //solo command
-      switch (command) { //TODO discuss a {help me} command
+    } else { //For single string command
+      switch (command) {
         case "clear":
           Commands.CLEAR.execute();
           break;
         case "ls":
-          System.out.println(Directory.printDirectory(currentDirectory));
+          System.out.println(directory.printDirectory(getCurrentDirectory()));
           break;
         case "pwd":
           System.out.println(getPwdString());
@@ -79,13 +95,27 @@ public class Terminal {
         case "touch":
           Commands.TOUCH.execute();
           break;
+        case "task1":
+          System.out.println(Tasks.TASK_ONE.task());
+          break;
+        case "task2":
+          System.out.println(Tasks.TASK_TWO.task());
+          break;
+        case "task3":
+          System.out.println(Tasks.TASK_THREE.task());
+          break;
         default:
           System.out.println(StringLiterals.INVALID_COMMAND);
       }
     }
   }
 
-  public void commandDescription(String command) { //TODO abc order
+  /**
+   * "help {command}" inputted by the user will print out a layman's description of the command
+   *
+   * @param command User inputted command to execute on the terminal
+   */
+  void commandDescription(String command) {
     switch (command) {
       case "cd":
         System.out.println(Commands.CHANGE_DIRECTORY.description());
@@ -108,112 +138,63 @@ public class Terminal {
       case "touch":
         System.out.println(Commands.TOUCH.description());
         break;
+      case "task1":
+        System.out.println(Tasks.TASK_ONE.tutorial());
+        break;
+      case "task2":
+        System.out.println(Tasks.TASK_TWO.tutorial());
+        break;
+      case "task3":
+        System.out.println(Tasks.TASK_THREE.tutorial());
+        break;
       default:
         System.out.println(StringLiterals.HELP_INVALID);
     }
   }
 
-  public void addToDirectory(String file){
-    if(currentDirectory.contains(file)){
-      System.out.printf(StringLiterals.FILE_ERROR, file); //TODO change to string literal, also look up unix terminal error
-    }
-    else {
+  /**
+   * Attempts to update the directory with the file
+   * Error message prints out if file already exists
+   *
+   * @param file User inputted file to create on the terminal
+   */
+  private void addToDirectory(String file) {
+    if (currentDirectory.contains(file)) {
+      System.out.printf(StringLiterals.FILE_ERROR,
+          file);
+    } else {
       currentDirectory.add(file);
     }
   }
 
-  public void changeDirectory(String dir){
+  /**
+   * Alters the present working directory
+   *
+   * @param dir User inputted directory to change present working directory
+   */
+  void changeDirectory(String dir){
     if (dir.equals("~")){
       setCurrentDirectory(homeDirectory);
       setPwdString(homePWD());
     }
     else if(getCurrentDirectory().contains(dir)){
       //cd
-      switch(dir) {
-        case "Desktop": //TODO encapsulate these and look at them to see if you guys want changes into any of these
-          setCurrentDirectory(Directory.changeDirectory(dir));
-          break;
-        case "Pictures":
-          currentDirectory = Directory.createPictureDirectory();
-          break;
-        case "Public":
-          currentDirectory = Directory.createPublicDirectory();
-          break;
-        case "Documents":
-          currentDirectory = Directory.createDocumentsDirectory();
-          break;
-        case "Downloads":
-          currentDirectory = Directory.createDownloadsDirectory();
-          break;
-        case "Library":
-          currentDirectory = Directory.createLibraryDirectory();
-          break;
-        case "Movies":
-          currentDirectory = Directory.createMoviesDirectory();
-          break;
-        default:
-          break;
-      }
+      setCurrentDirectory(directory.switchDirectory(dir));
       //change pwd
       setPwdString(homePWD()+dir+"/");
     }
     else {
-      System.out.println(StringLiterals.INVALID_CD + dir); //TODO also look up unix terminal error for matching
+      System.out.println(StringLiterals.INVALID_CD + dir);
     }
   }
 
-  public String homePWD(){
-    return StringLiterals.PWD + getUserName() + "/";
-  }
-
-
-  public LinkedList<String> getCurrentDirectory() {
-    return this.currentDirectory;
-  }
-
-
-  private void setCurrentDirectory(LinkedList<String> currentDirectory) {
-    this.currentDirectory = currentDirectory;
-  }
-
-  public String getCommand() {
-    return command;
-  }
-
-  public void setCommand(String command) {
-    this.command = command;
-  }
-
-  private String getUserName() {
-    return userName;
-  }
-
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
-
-  private String getComputerName() {
-    return computerName;
-  }
-  public void setComputerName(String computerName) {
-    this.computerName = computerName;
-  }
-
-  public String getPwdString() {
-    return pwdString;
-  }
-
-  public void setPwdString(String pwdString) {
-    this.pwdString = pwdString;
-  }
-  public String getUserDetails() {
-    return getUserName()+"@"+getComputerName();
-  }
-
-  private void setUserDetails() { //this acts as the setter for both userName and computerName
+  /**
+   * Used to set the userName and computerName of the session
+   */
+  private void setUserDetails() {
     System.out.println(StringLiterals.WELCOME);
     System.out.println();
-    Scanner sc= new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
     System.out.println(StringLiterals.USER_PROMPT);
     String userName = sc.next();
     System.out.println(StringLiterals.COMPUTER_PROMPT);
@@ -221,8 +202,55 @@ public class Terminal {
     setUserName(userName);
     setPwdString(homePWD());
     setComputerName(computerName);
-    System.out.println(StringLiterals.BLANK_SCREEN);
+    System.out.println(StringLiterals.CLEAR);
   }
 
+  private String homePWD(){
+    return StringLiterals.PWD + getUserName() + "/";
+  }
+
+  List<String> getCurrentDirectory() {
+    return this.currentDirectory;
+  }
+
+  private void setCurrentDirectory(List<String> currentDirectory) {
+    this.currentDirectory = currentDirectory;
+  }
+
+  private String getCommand() {
+    return command;
+  }
+
+  private void setCommand(String command) {
+    this.command = command;
+  }
+
+  private String getUserName() {
+    return userName;
+  }
+
+  private void setUserName(String userName) {
+    this.userName = userName;
+  }
+
+  private String getComputerName() {
+    return computerName;
+  }
+
+  private void setComputerName(String computerName) {
+    this.computerName = computerName;
+  }
+
+  private String getPwdString() {
+    return pwdString;
+  }
+
+  private void setPwdString(String pwdString) {
+    this.pwdString = pwdString;
+  }
+
+  private String getUserDetails() {
+    return getUserName() + "@" + getComputerName();
+  }
 
 }

@@ -4,21 +4,33 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-//TODO javadocs and ABC the create{}controller.Directory
+/**
+ * Holds all Directories being used in the Terminal. Each directory is implemented as a linked array list
+ */
 public class Directory {
 
-  private final List<String> homeDirectory;
+  private static List<String> homeDirectory;
+  private static List<String> desktopDirectory;
+  private static List<String> libraryDirectory;
+  private static List<String> moviesDirectory;
+  private static List<String> documentDirectory;
+  private static List<String> publicDirectory;
+  private static List<String> pictureDirectory;
+  private static List<String> downloadDirectory;
 
   public Directory() {
-    homeDirectory = createHomeDirectory();
+    homeDirectory = homeDirectory();
+    desktopDirectory = desktopDirectory();
+    libraryDirectory = libraryDirectory();
+    moviesDirectory = moviesDirectory();
+    documentDirectory = documentDirectory();
+    publicDirectory = publicDirectory();
+    pictureDirectory = pictureDirectory();
+    downloadDirectory = downloadDirectory();
   }
 
-  public List<String> getHomeDirectory() {
-    return homeDirectory;
-  }
-
-  private List<String> createHomeDirectory(){
-    return Arrays.asList(
+  private List<String> homeDirectory(){
+    return new LinkedList<>(Arrays.asList(
         "Pictures",
         "Desktop",
         "Public",
@@ -26,111 +38,160 @@ public class Directory {
         "Downloads",
         "Library",
         "Movies"
-    );
+    ));
   }
 
-  public static LinkedList<String> createDesktopDirectory(){
-    LinkedList<String> desktop = new LinkedList<>();
-    desktop.add("IDEs");
-    desktop.add("Jackbox Party Pack");
-    desktop.add("Homework");
-
-    return desktop;
+  private List<String> desktopDirectory(){
+    return new LinkedList<>(Arrays.asList(
+      "IDEs",
+      "Jackbox Party Pack",
+      "Homework"
+    ));
   }
 
-  public static LinkedList<String> createLibraryDirectory(){
-    LinkedList<String> library = new LinkedList<>();
-    library.add("Head First Java");
-    library.add("Java: A Beginner's Guide");
-    library.add("Java: The Complete Reference");
-    library.add("Core Java");
-    library.add("Effective Java");
-    library.add("Design Patterns: Elements of Reusable Object-Oriented Software");
-    library.add("Head First Design Patterns ");
-
-    return library;
+  private List<String> libraryDirectory(){
+    return new LinkedList<>(Arrays.asList(
+      "Head First Java",
+      "Java: A Beginner's Guide",
+      "Java: The Complete Reference",
+      "Core Java",
+      "Effective Java",
+      "Design Patterns: Elements of Reusable Object-Oriented Software",
+      "Head First Design Patterns "
+    ));
   }
 
-  public static LinkedList<String> createMoviesDirectory(){
-    LinkedList<String> movies = new LinkedList<>();
-    movies.add("Spinal Tap");
-    movies.add("Avatar");
-    movies.add("Avengers: Endgame");
-    movies.add("Star Wars: Revenge of the Sith");
-    movies.add("Titanic");
-    movies.add("The Dark Knight");
-
-    return movies;
+  private List<String> moviesDirectory(){
+    return new LinkedList<>(Arrays.asList(
+      "Spinal Tap",
+      "Avatar",
+      "Avengers: Endgame",
+      "Star Wars: Revenge of the Sith",
+      "The Dark Knight",
+      "Titanic"
+    ));
   }
 
 
-  public static LinkedList<String> createDocumentsDirectory() {
-    LinkedList<String> documents = new LinkedList<>();
-    documents.add("Computers aren’t magic!");
-    documents.add("Head First Java");
-    documents.add("THE KEYBOARD IS YOUR FRIEND");
-    documents.add("Why the mouse is not your friend");
-    documents.add("Top 10 reasons I hate Xfinity");
-    documents.add("Tips and Tricks(Have you read it yet?)");
-
-    return documents;
+  private List<String> documentDirectory() {
+    return new LinkedList<>(Arrays.asList(
+    "Computers aren’t magic!",
+    "Head First Java",
+    "THE KEYBOARD IS YOUR FRIEND",
+    "Why the mouse is not your friend",
+    "Top 10 reasons I hate Xfinity",
+    "Tips and Tricks(Have you read it yet?)"
+    ));
   }
 
-  public static LinkedList<String> createPublicDirectory() {
-    LinkedList<String> publix = new LinkedList<>();//publix because public is a keyword
-    publix.add("Public speaking event");
-    publix.add("Java: coffee not code");
-    publix.add("From Cradle to Gradle: Teaching babies to code");
-    publix.add("Reminder to give Giovanni, Albert, And Anthony a high five");
-    publix.add("Proposal for Coraline: Dead Threads");
-
-    return publix;
+  private List<String> publicDirectory() {
+    return new LinkedList<>(Arrays.asList(
+    "Public speaking event",
+    "Java: coffee not code",
+    "From Cradle to Gradle: Teaching babies to code",
+    "Reminder to give Giovanni, Albert, And Anthony a high five",
+    "Proposal for Coraline: Dead Threads"
+    ));
   }
 
-  public static LinkedList<String> createPictureDirectory(){
-    LinkedList<String> picture = new LinkedList<>();
-    picture.add("Cats");
-    picture.add("LinkedIn.JPEG");
-    picture.add("Screenshots");
-
-    return picture;
+  private List<String> pictureDirectory(){
+    return new LinkedList<>(Arrays.asList(
+    "Cats",
+    "LinkedIn.JPEG",
+    "Screenshots"
+    ));
   }
 
-  public static LinkedList<String> createDownloadsDirectory(){
-    LinkedList<String> downloads = new LinkedList<>();
-    downloads.add("League of Legends");
-    downloads.add("Spotify");
-
-    return downloads;
+  private List<String> downloadDirectory(){
+    return new LinkedList<>(Arrays.asList(
+    "League of Legends",
+    "Spotify"
+    ));
   }
 
-  public static String printDirectory(LinkedList<String> list){
+  /**
+   * Used to print all contents with the command {ls}
+   * @param list A directory
+   * @return A string representation of content within the directory
+   */
+  String printDirectory(List<String> list){
     StringBuilder directoryList = new StringBuilder(list.get(0) + "\n");
     for(int i = 1; i < list.size(); i++){
-      directoryList.append(list.get(i)).append("\n");
+      if(i == list.size()-1) {
+        directoryList.append(list.get(i));
+      }
+      else {
+        directoryList.append(list.get(i)).append("\n");
+      }
     }
     return directoryList.toString();
   }
 
-
-  public static LinkedList<String> changeDirectory(String directory){ //TODO look into switch short hand (desktop) => createDesktopDirectory(), it's something like this
+  /**
+   * Used to change directory with the command {cd [directory name]},
+   * option to use {cd ~} to return to home directory
+   * @param directory the second command after {cd}
+   * @return a list to store as the present working directory
+   */
+  List<String> switchDirectory(String directory){
+    List<String> changeTo;
     switch(directory) {
       case "Desktop":
-        return createDesktopDirectory();
+        changeTo = getDesktopDirectory();
+        break;
       case "Pictures":
-        return createPictureDirectory();
+        changeTo = getPictureDirectory();
+        break;
       case "Public":
-        return createPublicDirectory();
+        changeTo = getPublicDirectory();
+        break;
       case "Documents":
-        return createDocumentsDirectory();
+        changeTo = getDocumentDirectory();
+        break;
       case "Downloads":
-        return createDownloadsDirectory();
+        changeTo = getDownloadDirectory();
+        break;
       case "Library":
-        return createLibraryDirectory();
+        changeTo = getLibraryDirectory();
+        break;
       case "Movies":
-        return createMoviesDirectory();
+        changeTo = getMoviesDirectory();
+        break;
+      default:
+        changeTo = getHomeDirectory();
     }
-    return createHomeDirectory();
+    return changeTo;
+  }
+  List<String> getHomeDirectory() {
+    return homeDirectory;
+  }
+
+  List<String> getDesktopDirectory() {
+    return desktopDirectory;
+  }
+
+  List<String> getLibraryDirectory() {
+    return libraryDirectory;
+  }
+
+  List<String> getMoviesDirectory() {
+    return moviesDirectory;
+  }
+
+  List<String> getDocumentDirectory() {
+    return documentDirectory;
+  }
+
+  List<String> getPublicDirectory() {
+    return publicDirectory;
+  }
+
+  List<String> getPictureDirectory() {
+    return pictureDirectory;
+  }
+
+   List<String> getDownloadDirectory() {
+    return downloadDirectory;
   }
 }
 
