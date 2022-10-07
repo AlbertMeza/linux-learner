@@ -1,10 +1,10 @@
 # Linux Learner
 
-The project that uses the console to implement a sandbox like Linux terminal. 
+This is a project that uses the console to implement a sandbox like emulation of a Linux terminal. 
 
-The user sees a replicated Unix shell.
+The user sees a replicated Unix shell with accessible and modifiable directories. 
 
-The user will type commands and receive similar responses you would get on a real terminal.
+The user will type commands and receive similar responses you would get on a real terminal which suits as a perfect simulation prior to the installation or usage of a Linux kernel.
 
 We programmed the following Linux commands: 
 
